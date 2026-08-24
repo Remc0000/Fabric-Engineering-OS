@@ -1,0 +1,29 @@
+name: Quality gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Required repository files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Validate structure, governance, and links
+        shell: pwsh
+        run: ./.github/scripts/validate-content.ps1
+
+      - name: Detect whitespace errors
+        shell: bash
+        run: git diff --check HEAD^ HEAD

@@ -1,4 +1,6 @@
-MIT License
+# MIT License
+
+Project governance is defined by the [Fabric Engineering OS Constitution](CONSTITUTION.md); the license terms below govern use and distribution.
 
 Copyright (c) 2026 Remco van Dam
 

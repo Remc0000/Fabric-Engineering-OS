@@ -1,0 +1,50 @@
+name: Deploy to TEST
+
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_path:
+        description: Repository-relative path to artifacts proven in DEV
+        required: true
+        type: string
+      change_id:
+        description: Issue or pull request identifier
+        required: true
+        type: string
+      dev_evidence:
+        description: Link or identifier for the successful DEV deployment
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  quality:
+    uses: ./.github/workflows/quality-gates.yml
+
+  deploy:
+    name: TEST deployment
+    needs: quality
+    runs-on: ubuntu-latest
+    environment: TEST
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Record DEV evidence
+        shell: bash
+        run: echo "DEV evidence=${{ inputs.dev_evidence }}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Validate artifact path
+        shell: pwsh
+        run: |
+          $path = Join-Path $env:GITHUB_WORKSPACE '${{ inputs.artifact_path }}'
+          if (-not (Test-Path $path)) {
+            throw "Artifact path does not exist: $path"
+          }
+
+      - name: Run project TEST adapter
+        shell: pwsh
+        run: ./.github/deployment/deploy-test.ps1 -ArtifactPath '${{ inputs.artifact_path }}' -ChangeId '${{ inputs.change_id }}'

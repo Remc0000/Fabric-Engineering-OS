@@ -1,0 +1,40 @@
+name: Production incident learning
+description: Capture reusable learning without exposing sensitive incident data.
+title: "[Incident learning]: "
+labels:
+  - incident
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include secrets, customer data, or sensitive identifiers. Follow [CONSTITUTION.md](/CONSTITUTION.md). Agents cannot deploy to PROD."
+  - type: input
+    id: owner
+    attributes:
+      label: Human incident owner
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Sanitized impact
+    validations:
+      required: true
+  - type: textarea
+    id: timeline
+    attributes:
+      label: Sanitized timeline and evidence
+    validations:
+      required: true
+  - type: textarea
+    id: learning
+    attributes:
+      label: Reusable learning
+      description: Identify which pattern, test, golden path, or standard should change.
+    validations:
+      required: true
+  - type: textarea
+    id: approvals
+    attributes:
+      label: Required human decisions
+    validations:
+      required: true
