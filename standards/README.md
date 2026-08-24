@@ -18,6 +18,7 @@ Microsoft Fabric is the only supported data platform. GitHub Copilot is the agen
 | [GitHub delivery](github-delivery.md) | Issues, branches, commits, pull requests, and reviews |
 | [Environment promotion](environment-promotion.md) | DEV, TEST, and PROD progression |
 | [Naming](naming.md) | Consistent artifact and repository names |
+| [Fabric Decision Records](../decision-records/README.md) | Material Fabric architecture, security, data, cost, topology, and control decisions |
 
 ## Interpretation
 

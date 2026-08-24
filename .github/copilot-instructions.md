@@ -11,6 +11,7 @@ Operate according to the [Fabric Engineering OS Constitution](../CONSTITUTION.md
 - Select an existing bundle, capability, pattern, golden path, or reference architecture before creating new guidance.
 - State assumptions and tenant-specific prerequisites explicitly.
 - Create focused branches, commits, and pull requests with evidence.
-- Agents may use approved DEV and TEST workflows.
+- Agents may use approved DEV and TEST workflows after human approval and merge.
+- Record OS-canon, wiki, and upstream changes as a proposal issue before implementing.
 - Stop for human architecture, pull request, merge, and production approval.
-- Never merge, self-approve, deploy to PROD, change this OS autonomously, or modify upstream repositories.
+- Never merge, self-approve, deploy to PROD, change this OS or the wiki autonomously, or modify upstream repositories.

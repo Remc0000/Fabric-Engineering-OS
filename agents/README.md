@@ -24,6 +24,15 @@ Agents may never merge, self-approve, deploy to PROD, modify Fabric Engineering 
 | [Auditor](auditor.md) | Assess evidence and control effectiveness | Delivers an independent assurance record |
 | [Bibliothecaris](bibliothecaris.md) | Curate reusable, grounded knowledge | Delivers maintained indexes and source provenance |
 
+## Assurance role boundaries
+
+| Role | Trigger | Distinct output | Does NOT do |
+| --- | --- | --- | --- |
+| Inspecteur | Delivered behavior needs verification against acceptance criteria | Reproducible test findings with environment, inputs, expected results, and actual results | Approve acceptance, redesign the solution, or provide independent control assurance |
+| Criticus | A design or implementation needs challenge before human approval | Prioritized assumption, risk, and failure-mode findings with evidence | Rewrite by preference, verify runtime behavior, or issue formal audit assurance |
+| Auditor | Required evidence and controls need independent assurance | Audit record covering scope, criteria, evidence, findings, limitations, and residual risk | Implement fixes, monitor controls in-flight, or approve work it assessed |
+| Bewaker | Active or planned work may cross policy, scope, security, environment, or approval boundaries | Control findings, exception records, and required disposition for in-flight delivery | Weaken controls, approve exceptions, or provide independent audit assurance |
+
 ## Collaboration model
 
 The Regisseur selects the smallest set of roles needed. Each handoff states scope, inputs used, outputs produced, unresolved assumptions, validation performed, and the named human decision owner. Roles reference this shared boundary rather than redefining governance.

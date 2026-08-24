@@ -52,6 +52,7 @@ Agents must never merge, self-approve, deploy to PROD, modify this OS automatica
 | [`reference-architectures/`](reference-architectures/README.md) | Opinionated Fabric architecture baselines |
 | [`bootstrap/`](bootstrap/README.md) | Project and feature startup guides |
 | [`standards/`](standards/README.md) | Engineering and governance standards |
+| [`decision-records/`](decision-records/README.md) | Fabric Decision Records and template |
 | [`decision-trees/`](decision-trees/README.md) | Bounded decision support |
 | [`community/`](community/README.md) | Contribution, maintenance, and release practices |
 | [`wiki/`](wiki/Home.md) | Source-controlled adopter documentation |
@@ -59,3 +60,5 @@ Agents must never merge, self-approve, deploy to PROD, modify this OS automatica
 ## Status
 
 The repository is preparing **v0.9.0-preview**. Preview content must be validated against the target tenant, region, capacity, licensing, and current Microsoft Learn documentation before implementation.
+
+Using this repository as a template? See [Template Usage](TEMPLATE-USAGE.md). To report a vulnerability, see the [Security Policy](SECURITY.md). Notable changes are tracked in the [Changelog](CHANGELOG.md).

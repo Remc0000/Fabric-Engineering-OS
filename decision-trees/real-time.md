@@ -20,7 +20,7 @@ flowchart TD
 
 - Define measurable event-to-insight or event-to-action latency; avoid using “real time” as a vague preference.
 - Model late, duplicated, missing, and out-of-order events.
-- Bound automated actions with identity, rate, retry, idempotency, audit, and human intervention controls.
+- Bound automated actions, including [Activator](../capabilities/activator.md) scenarios, with identity, rate, retry, idempotency, audit, and human intervention controls.
 - Provide replay and degradation paths where the business outcome requires them.
 
 ## Stop conditions

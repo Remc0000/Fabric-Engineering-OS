@@ -1,0 +1,32 @@
+# Changelog
+
+All notable changes to Fabric Engineering OS are recorded here. This changelog is governed by the [Fabric Engineering OS Constitution](CONSTITUTION.md).
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project aims to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html). Releases and tags are created only through a human-approved process; see the [Release Strategy](community/RELEASE-STRATEGY.md).
+
+## [Unreleased]
+
+### Added
+
+- Capability guides for Activator, Dataflows Gen2, and Variable Libraries.
+- `metadata-driven-elt` agent bundle aligned to its golden path and reference architecture.
+- Fabric Decision Record (FDR) system under `decision-records/` with a reusable template.
+- `SECURITY.md` vulnerability-reporting and data-handling policy.
+- `TEMPLATE-USAGE.md` describing canonical-versus-consumer content and required settings.
+- Assurance role boundary matrix in `agents/README.md`.
+- `.github/CONTRIBUTING.md` pointer so GitHub surfaces contribution guidance.
+
+### Changed
+
+- Bound the reference-source labels to concrete upstream repositories in a Source-Grounding registry: the Fabric-only unified data foundation accelerator (Option 1), Skills for Fabric, FMD Framework, the Microsoft data engineering playbook, and Project Osmos as an agentic-execution reference; corrected stale `microsoft/fabric-accelerator` links.
+- Constitution, Governance, `AGENTS.md`, and Copilot instructions now protect the wiki as a surface and require a proposal issue before OS-canon or upstream changes.
+- DEV and TEST deployment workflows refuse to run outside the protected default branch.
+- The content-validation gate exempts consumer documentation directories from the Constitution-reference requirement.
+- Relocated the repository inventory to `community/repository-inventory.md` as a maintainer artifact.
+
+## [0.9.0-preview] - 2026-08-24
+
+### Added
+
+- Initial Fabric Engineering OS: eleven agent roles, eight agent bundles, fourteen capability guides, nine golden paths, twelve patterns, five reference architectures, bootstrap guides, standards, decision trees, community docs, and source-controlled wiki.
+- GitHub issue and pull request templates, Copilot instructions, quality gates, fail-closed DEV/TEST deployment adapters, and a human-controlled PROD approval gate.

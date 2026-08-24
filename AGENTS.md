@@ -22,8 +22,9 @@ These instructions apply to the entire repository.
 - Add the smallest meaningful automated validation for changed behavior.
 - Preserve human approval for merges and production operations.
 - Document consequential architecture and governance decisions.
-- Agents may create issues, branches, commits, and pull requests, and use approved workflows for DEV and TEST deployments.
-- Agents must never merge, self-approve, deploy to PROD, change this OS autonomously, or modify upstream repositories.
+- Agents may create issues, branches, commits, and pull requests, and use approved workflows for DEV and TEST deployments after human approval and merge.
+- Record OS-canon, wiki, and upstream changes as a proposal issue before implementing them.
+- Agents must never merge, self-approve, deploy to PROD, change this OS or the wiki autonomously, or modify upstream repositories.
 
 ## Pull requests
 

@@ -41,7 +41,7 @@ Human architecture and platform owners approve the shared design; source/data/se
 
 ## Rollback and exit strategy
 
-Pause affected metadata entries, preserve run/checkpoint state, restore prior orchestrator and compatible metadata, then replay from the last safe checkpoint. Move an exceptional source to a dedicated path through a reviewed architecture decision.
+Pause affected metadata entries, preserve run/checkpoint state, restore prior orchestrator and compatible metadata, then replay from the last safe checkpoint. Move an exceptional source to a dedicated path through a reviewed [Fabric Decision Record](../decision-records/TEMPLATE.md).
 
 ## Related guidance
 

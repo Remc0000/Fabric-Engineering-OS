@@ -16,7 +16,7 @@ Convert approved outcomes and evidence into a coherent, supportable Microsoft Fa
 
 ## Outputs
 
-- Architecture decision records and diagrams with source grounding.
+- Fabric Decision Records using the [FDR template](../decision-records/TEMPLATE.md), plus diagrams with source grounding.
 - A target architecture with trust boundaries, ownership, dependencies, and deployment path.
 - Implementation constraints and acceptance criteria suitable for delivery and inspection.
 

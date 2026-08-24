@@ -30,7 +30,7 @@ A domain-owned Fabric data product publishes versioned, secure, observable gold 
 
 ## Required evidence and tests
 
-- Versioned data contract and architecture decision.
+- Versioned data contract and [Fabric Decision Record](../decision-records/TEMPLATE.md).
 - Source-to-gold reconciliation and record-level lineage sample.
 - Idempotent replay, quarantine, late/corrected-data, and schema compatibility results.
 - Freshness, quality, performance, least-privilege, monitoring, and TEST rollback evidence.
