@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Governance and operating boundaries
+    url: https://github.com/Remc0000/Fabric-Engineering-OS/blob/main/CONSTITUTION.md
+    about: Review the Constitution before opening an issue.

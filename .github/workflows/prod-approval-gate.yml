@@ -1,0 +1,38 @@
+name: PROD approval gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_ref:
+        description: Immutable commit SHA or signed release tag
+        required: true
+        type: string
+      test_evidence:
+        description: Link to successful TEST evidence
+        required: true
+        type: string
+      change_id:
+        description: Approved change identifier
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  approve:
+    name: Human PROD approval
+    runs-on: ubuntu-latest
+    environment: PROD
+    steps:
+      - name: Record approval evidence
+        shell: bash
+        run: |
+          {
+            echo "## Production approval gate"
+            echo "- Release: ${{ inputs.release_ref }}"
+            echo "- TEST evidence: ${{ inputs.test_evidence }}"
+            echo "- Change: ${{ inputs.change_id }}"
+            echo
+            echo "This workflow records a protected human approval only. It does not deploy."
+          } >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,49 @@
+name: Architecture change
+description: Propose a change to a Fabric architecture or golden path.
+title: "[Architecture]: "
+labels:
+  - architecture
+body:
+  - type: markdown
+    attributes:
+      value: "This proposal is governed by [CONSTITUTION.md](/CONSTITUTION.md) and requires human architecture approval."
+  - type: input
+    id: outcome
+    attributes:
+      label: Outcome
+      description: What measurable outcome must the architecture enable?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and constraints
+      description: Include scale, latency, data classification, region, capacity, cost, and operational constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Proposed decision
+      description: Identify capabilities, patterns, alternatives, and decision drivers.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Evidence
+      description: Link Microsoft Learn and relevant repository guidance.
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risks and rollback
+    validations:
+      required: true
+  - type: input
+    id: approver
+    attributes:
+      label: Human architecture owner
+    validations:
+      required: true

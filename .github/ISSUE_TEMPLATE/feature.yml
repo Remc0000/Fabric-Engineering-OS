@@ -1,0 +1,50 @@
+name: Feature or guidance
+description: Propose an OS feature, pattern, guide, or correction.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: "Read [CONSTITUTION.md](/CONSTITUTION.md) before proposing changes."
+  - type: input
+    id: problem
+    attributes:
+      label: Problem
+      description: State the problem without prescribing a solution.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome and users
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Repository area
+      options:
+        - Agent
+        - Agent bundle
+        - Capability
+        - Golden path
+        - Pattern
+        - Reference architecture
+        - Bootstrap
+        - Standard
+        - Governance
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and authoritative sources
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+    validations:
+      required: true

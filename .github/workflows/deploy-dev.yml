@@ -1,0 +1,42 @@
+name: Deploy to DEV
+
+on:
+  workflow_dispatch:
+    inputs:
+      artifact_path:
+        description: Repository-relative path to reviewed deployment artifacts
+        required: true
+        type: string
+      change_id:
+        description: Issue or pull request identifier
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  quality:
+    uses: ./.github/workflows/quality-gates.yml
+
+  deploy:
+    name: DEV deployment
+    needs: quality
+    runs-on: ubuntu-latest
+    environment: DEV
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate artifact path
+        shell: pwsh
+        run: |
+          $path = Join-Path $env:GITHUB_WORKSPACE '${{ inputs.artifact_path }}'
+          if (-not (Test-Path $path)) {
+            throw "Artifact path does not exist: $path"
+          }
+
+      - name: Run project DEV adapter
+        shell: pwsh
+        run: ./.github/deployment/deploy-dev.ps1 -ArtifactPath '${{ inputs.artifact_path }}' -ChangeId '${{ inputs.change_id }}'
