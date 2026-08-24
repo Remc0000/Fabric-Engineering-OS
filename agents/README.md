@@ -36,3 +36,5 @@ Agents may never merge, self-approve, deploy to PROD, modify Fabric Engineering 
 ## Collaboration model
 
 The Regisseur selects the smallest set of roles needed. Each handoff states scope, inputs used, outputs produced, unresolved assumptions, validation performed, and the named human decision owner. Roles reference this shared boundary rather than redefining governance.
+
+For every new GitHub project, the governed [Spec Kit workflow](../standards/spec-kit.md) is mandatory: Ontdekker proposes the specification, the named human specification owner approves the exact revision or assigns adjustments, Architect plans only after specification approval, Regisseur creates downstream tasks only after applicable gates, Maker implements, and Inspecteur verifies. Specification approval never substitutes for architecture, pull-request, merge, environment, or production approval.

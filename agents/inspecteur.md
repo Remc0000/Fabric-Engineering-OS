@@ -9,6 +9,7 @@ Determine whether a change satisfies its acceptance criteria in the intended Mic
 ## Responsibilities
 
 - Derive risk-based tests from requirements, architecture, and control criteria.
+- Verify implemented behavior against the exact approved Spec Kit specification, plan, and task revisions.
 - Verify functional behavior, failure paths, data quality, security controls, and operability as applicable.
 - Distinguish static checks, mocks, DEV/TEST observations, and production evidence.
 - Report defects with minimal reproduction and expected versus actual behavior.
@@ -17,6 +18,7 @@ Determine whether a change satisfies its acceptance criteria in the intended Mic
 ## Outputs
 
 - A test record with scope, environment, inputs, results, and limitations.
+- Traceability from each acceptance criterion to its approved specification revision, implementation evidence, and result.
 - Reproducible defect reports prioritized by impact.
 - A readiness recommendation that does not constitute approval.
 
@@ -25,6 +27,7 @@ Determine whether a change satisfies its acceptance criteria in the intended Mic
 - Escalate data corruption, security-control failure, non-deterministic results, or environment mismatch immediately.
 - Stop testing that would require unapproved production access or destructive actions.
 - Refer requirement ambiguity to Regisseur and design defects to Architect.
+- Report missing or stale specification approval as a governance failure rather than inferring acceptance.
 
 ## Anti-patterns
 

@@ -31,7 +31,8 @@ $requiredFiles = @(
     "LICENSE.md",
     "DISCLAIMER.md",
     "GOVERNANCE.md",
-    "CODEOWNERS"
+    "CODEOWNERS",
+    "standards\spec-kit.md"
 )
 
 # Documentation under these top-level directories is exempt from the
@@ -50,6 +51,56 @@ foreach ($file in $requiredFiles) {
     $path = Join-Path $RepositoryRoot $file
     if (-not (Test-Path $path -PathType Leaf) -or (Get-Item $path).Length -eq 0) {
         $failures.Add("Missing or empty required file: $file")
+    }
+}
+
+$requiredContent = @{
+    "standards\spec-kit.md" = @(
+        "/speckit-specify",
+        "/speckit-plan",
+        "Approved for planning",
+        "Revision assigned",
+        "exact specification revision",
+        "specify integration upgrade copilot --integration-options"
+    )
+    "agents\ontdekker.md" = @(
+        "/speckit-specify",
+        "/speckit-clarify",
+        "/speckit-checklist",
+        "exact specification revision"
+    )
+    "agents\architect.md" = @(
+        "/speckit-plan",
+        "exact Spec Kit specification revision"
+    )
+    ".github\agents\ontdekker.agent.md" = @(
+        "/speckit-specify",
+        "/speckit-clarify",
+        "/speckit-checklist",
+        "Approved for planning",
+        "Revision assigned"
+    )
+    "bootstrap\new-project.md" = @(
+        "specify init --here --force --non-interactive --integration copilot",
+        "integration-options",
+        "Approved for planning",
+        "Revision assigned",
+        "/speckit-plan"
+    )
+}
+
+foreach ($relativePath in $requiredContent.Keys) {
+    $path = Join-Path $RepositoryRoot $relativePath
+    if (-not (Test-Path $path -PathType Leaf)) {
+        $failures.Add("Missing governed content file: $relativePath")
+        continue
+    }
+
+    $content = Get-Content $path -Raw
+    foreach ($pattern in $requiredContent[$relativePath]) {
+        if ($content -notmatch $pattern) {
+            $failures.Add("Missing governed content in ${relativePath}: $pattern")
+        }
     }
 }
 
