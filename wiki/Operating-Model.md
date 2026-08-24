@@ -32,4 +32,3 @@ The canonical accountability model is [Governance](../GOVERNANCE.md). The summar
 Do not restate or fork upstream guidance. Apply the canonical precedence in the [Constitution](../CONSTITUTION.md): Microsoft Learn for product truth; Skills for Fabric for preferred expertise; Fabric Accelerator for architecture; FMD for primary implementation; ELT as secondary; Fabric Toolbox for optional discovery. None may be automatically modified by this repository.
 
 For contribution mechanics, use [Contributing](../community/CONTRIBUTING.md). For common interpretations, use the [FAQ](FAQ.md).
-

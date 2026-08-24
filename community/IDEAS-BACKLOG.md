@@ -51,4 +51,3 @@ Copy this block for a new idea:
 ## Promotion rule
 
 An idea moves to the [Community Roadmap](ROADMAP.md) only after an issue provides a clear outcome, scope, owner, evidence, dependencies, risks, and human maintainer acceptance. Delivered work is recorded through merged pull requests and human-published releases under the [Release Strategy](RELEASE-STRATEGY.md).
-

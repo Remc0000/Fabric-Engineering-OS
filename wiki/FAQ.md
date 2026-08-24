@@ -39,4 +39,3 @@ Only through approved, auditable workflows with required human authorization. Th
 ## Where should product-specific details live?
 
 Link to current Microsoft Learn content and record project-specific assumptions in an issue or decision record. Do not copy large upstream guidance into this wiki. Use the [Contribution Guide](../community/CONTRIBUTING.md) for evidence expectations.
-

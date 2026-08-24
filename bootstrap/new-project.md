@@ -91,4 +91,3 @@ Copy this checklist into the project issue or pull request and replace every pla
 1. Add work with the [New Feature](new-feature.md) template.
 2. Review the [Operating Model](../wiki/Operating-Model.md).
 3. Follow the [Contribution Guide](../community/CONTRIBUTING.md).
-

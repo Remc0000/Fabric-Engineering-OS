@@ -35,4 +35,3 @@ Agents may prepare evidence and draft release material. They never approve, merg
 Preview releases may change before v1.0 and must state their validation limits. Deprecations require a replacement or rationale, migration guidance, and an announced removal window. Security or correctness fixes may be expedited, but human approval and release ownership remain mandatory.
 
 Ideas in the [Ideas Backlog](IDEAS-BACKLOG.md) do not enter a release until accepted into governed scope. See [Maintainers](MAINTAINERS.md) for decision roles.
-

@@ -23,4 +23,3 @@ Use these pages as navigation for adopters. Canonical policy and project guidanc
 | Maintain or release | [Community Governance](../community/README.md) |
 
 Fabric is the only supported data platform. GitHub Copilot is the runtime, GitHub MCP is the repository interface, and Microsoft Learn is authoritative. Preferred guidance order and upstream read-only rules are defined canonically in the [Constitution](../CONSTITUTION.md).
-

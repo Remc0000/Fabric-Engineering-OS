@@ -87,4 +87,3 @@ Use this checklist for a Fabric data agent grounded in approved semantic and dat
 1. Establish grounding with [New Data Product](new-data-product.md).
 2. Review the [Operating Model](../wiki/Operating-Model.md).
 3. Follow the [Contribution Guide](../community/CONTRIBUTING.md).
-

@@ -87,4 +87,3 @@ Use this checklist for a Microsoft Fabric Real-Time Intelligence project.
 1. Review the [New Project](new-project.md) template for repository setup.
 2. Use the [FAQ](../wiki/FAQ.md) for source and approval questions.
 3. Follow the [Contribution Guide](../community/CONTRIBUTING.md).
-

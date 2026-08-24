@@ -26,4 +26,3 @@ This directory contains the concise, source-controlled rules for contributing to
 - Humans approve pull requests, perform merges, authorize releases, and own every production action.
 
 Use the [source-controlled wiki](../wiki/Home.md) for adopter navigation and the root [Governance model](../GOVERNANCE.md) for canonical decision rights.
-

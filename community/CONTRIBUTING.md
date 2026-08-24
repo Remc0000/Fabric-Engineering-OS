@@ -38,4 +38,3 @@ Agents may help create issues, branches, commits, pull requests, and approved DE
 Maintainers may close an incomplete proposal with a reason. Acceptance into the [Roadmap](ROADMAP.md) is direction, not a delivery promise. Unaccepted possibilities remain in the [Ideas Backlog](IDEAS-BACKLOG.md).
 
 For roles and escalation, see [Maintainers](MAINTAINERS.md) and canonical [Governance](../GOVERNANCE.md).
-

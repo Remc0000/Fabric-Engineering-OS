@@ -39,4 +39,3 @@ Maintainers are added through a human-approved pull request that records scope, 
 Review the change, not the contributor. Give actionable reasons, declare conflicts of interest, and recuse when independence is impaired. Security-sensitive reports should use the repository's approved private reporting path rather than a public issue.
 
 Release and merge responsibilities are detailed in the [Release Strategy](RELEASE-STRATEGY.md); canonical authority remains in [Governance](../GOVERNANCE.md).
-

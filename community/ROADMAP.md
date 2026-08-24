@@ -33,4 +33,3 @@ Roadmap items express accepted direction. They are not date, staffing, release, 
 5. Record delivered behavior in release notes, not as a roadmap claim.
 
 Human maintainers decide roadmap acceptance. Human release owners decide releases. Human production owners decide and perform production actions.
-

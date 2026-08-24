@@ -99,4 +99,3 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 1. Complete the selected scenario template above.
 2. Use the [Operating Model](../wiki/Operating-Model.md) for decision rights and evidence flow.
 3. Submit changes through the [Contribution Guide](../community/CONTRIBUTING.md).
-

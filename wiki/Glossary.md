@@ -26,4 +26,3 @@ These short definitions aid navigation. Canonical rules remain in the linked pol
 | Roadmap item | Accepted direction, not a guaranteed date or release. See the [Community Roadmap](../community/ROADMAP.md). |
 
 For practical application, see [Getting Started](Getting-Started.md) and [Operating Model](Operating-Model.md).
-

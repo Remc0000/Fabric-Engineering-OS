@@ -29,4 +29,3 @@ This page routes adopters to canonical instructions rather than reproducing them
 | Read-only replication into Fabric | [New Mirroring Project](../bootstrap/new-mirroring-project.md) |
 
 Before opening a pull request, follow the canonical [Contribution Guide](../community/CONTRIBUTING.md). For role boundaries and evidence flow, use [Operating Model](Operating-Model.md).
-

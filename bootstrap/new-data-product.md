@@ -88,4 +88,3 @@ Use this checklist to establish an owned, discoverable, reusable data product in
 1. For conversational access, use [New Data Agent](new-data-agent.md).
 2. Review the [Glossary](../wiki/Glossary.md).
 3. Follow the [Contribution Guide](../community/CONTRIBUTING.md).
-

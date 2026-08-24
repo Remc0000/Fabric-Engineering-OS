@@ -87,4 +87,3 @@ Use this checklist to plan and validate a Microsoft Fabric mirroring project wit
 1. Define downstream ownership with [New Data Product](new-data-product.md).
 2. Review the [Operating Model](../wiki/Operating-Model.md).
 3. Follow the [Contribution Guide](../community/CONTRIBUTING.md).
-

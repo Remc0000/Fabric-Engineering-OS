@@ -86,4 +86,3 @@ Use this checklist for a bounded feature in an existing Fabric repository.
 1. For a reusable data contract, use [New Data Product](new-data-product.md).
 2. Review [Getting Started](../wiki/Getting-Started.md).
 3. Submit through the [Contribution Guide](../community/CONTRIBUTING.md).
-
