@@ -13,6 +13,7 @@ This governance model implements the [Fabric Engineering OS Constitution](CONSTI
 | Deploy to DEV or TEST | May use approved workflow | Authorizes workflow and owns outcome |
 | Deploy to PROD | Prohibited | Approves and performs through protected workflow |
 | Change this OS | May propose through a pull request | Approves and merges |
+| Change the source-controlled wiki | May propose through a pull request; never autonomous | Approves and merges |
 | Change upstream repository | Prohibited automatically | Managed outside this OS |
 
 ## Decision rights
@@ -28,7 +29,7 @@ One person may hold multiple roles, but an agent cannot satisfy a human approval
 
 ## Change process
 
-1. Capture intent and owner in an issue.
+1. Capture intent and owner in an issue. Changes to OS canon (Constitution, governance, agents, capabilities, patterns, golden paths, reference architectures, standards, workflows), the wiki, or any upstream contribution must start as a **proposal issue** before implementation.
 2. Select the relevant bundle or golden path.
 3. Document decisions, risks, tests, and environment impact.
 4. Implement on a branch and open a pull request.
@@ -43,3 +44,13 @@ An exception must identify scope, owner, rationale, risk, compensating controls,
 ## OS evolution
 
 Changes to constitutional boundaries, source precedence, agent permissions, or approval gates are governance changes. They require a dedicated pull request and explicit maintainer approval; they cannot be bundled invisibly into feature work.
+
+## Required repository settings
+
+Some controls are enforced only by GitHub configuration, not by files in this repository. They must be set manually and re-verified after any template instantiation:
+
+- **Branch protection on the default branch:** require a pull request, the required status check, and — for the canonical OS — at least one human approval and CODEOWNERS review. Any deliberate deviation must be recorded as an accepted risk.
+- **Environment protection for DEV and TEST:** configure the human authorization appropriate to each environment's risk. Workflow YAML alone does not enforce this.
+- **Environment protection for PROD:** required reviewers and a protected-branch policy; production remains human-approved and human-executed.
+
+The DEV and TEST deployment workflows additionally refuse to run from any branch other than the protected default branch, so only human-approved, merged changes can be deployed.

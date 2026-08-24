@@ -8,7 +8,7 @@ Use supported Fabric Mirroring to replicate an operational source into OneLake, 
 
 ## Context and source posture
 
-[Fabric Accelerator](https://github.com/microsoft/fabric-accelerator) is the primary architecture reference and remains read-only; no content or synchronization is implied. Validate supported sources, limitations, security, monitoring, and replication behavior with [Microsoft Learn: Mirroring in Fabric](https://learn.microsoft.com/fabric/database/mirrored-database/overview).
+[Fabric Accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) is the primary architecture reference and remains read-only; no content or synchronization is implied. Validate supported sources, limitations, security, monitoring, and replication behavior with [Microsoft Learn: Mirroring in Fabric](https://learn.microsoft.com/fabric/database/mirrored-database/overview).
 
 ```mermaid
 flowchart LR

@@ -43,6 +43,10 @@ Human data and security owners approve source use and access. A human architectu
 
 Disable schedules or replication without deleting evidence, revoke the runtime identity, preserve the last safe checkpoint, and stop downstream publication. If the source cannot meet contract or support requirements, document rejection and remove DEV/TEST artifacts through a reviewed change.
 
+## Reference sources
+
+[Project Osmos](https://github.com/microsoft/project-osmos) demonstrates governed agent-run Lakehouse exploration, ingestion notebooks, and row-count validation that align with this path's DEV/TEST evidence; agents may apply the pattern only after human approval and never against PROD. It is a read-only reference; validate connectors, shortcuts, and Mirroring against Microsoft Learn. See the [Source-Grounding registry](../standards/source-grounding.md).
+
 ## Related guidance
 
 [Capability catalog](../capabilities/README.md) · [Pipeline](../capabilities/pipeline.md) · [Mirroring](../capabilities/mirroring.md) · [OneLake](../capabilities/onelake.md) · [Data product architecture](../reference-architectures/data-product.md) · [Mirroring architecture](../reference-architectures/mirroring-to-gold.md)

@@ -8,7 +8,7 @@ Provide bounded natural-language discovery and analysis over approved Fabric sou
 
 ## Context and source posture
 
-[Fabric Accelerator](https://github.com/microsoft/fabric-accelerator) is the primary architecture reference and is not copied or automatically synchronized. Validate supported data sources, configuration, permissions, and current limitations with [Microsoft Learn: Fabric data agents](https://learn.microsoft.com/fabric/data-science/concept-data-agent).
+[Fabric Accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) is the primary architecture reference and is not copied or automatically synchronized. Validate supported data sources, configuration, permissions, and current limitations with [Microsoft Learn: Fabric data agents](https://learn.microsoft.com/fabric/data-science/concept-data-agent).
 
 ```mermaid
 flowchart LR

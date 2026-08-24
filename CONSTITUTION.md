@@ -24,12 +24,13 @@ Fabric Engineering OS enables governed, repeatable, AI-assisted engineering for 
 3. GitHub MCP is the repository interface.
 4. Microsoft Learn MCP is authoritative for Microsoft product behavior.
 5. Skills for Fabric is the preferred source of Fabric expertise.
-6. Fabric Accelerator is the primary architecture reference.
+6. Fabric Accelerator (unified data foundation, Fabric-only Option 1) is the primary architecture reference.
 7. FMD Framework is the primary implementation reference.
 8. ELT Framework is a secondary implementation reference.
 9. Fabric Toolbox is optional for discovery.
+10. Project Osmos is an agentic-execution reference for Fabric data engineering.
 
-These upstream sources are read-only references. Fabric Engineering OS does not synchronize with or modify them automatically.
+These upstream sources are read-only references. Fabric Engineering OS does not synchronize with or modify them automatically. Concrete source locations are registered in [Source-Grounding](standards/source-grounding.md).
 
 ## Governance
 
@@ -38,8 +39,10 @@ These upstream sources are read-only references. Fabric Engineering OS does not 
 - Required status checks must pass before merge.
 - Humans approve architecture, pull requests, merges, and production actions.
 - Agents may create issues, branches, commits, and pull requests.
-- Agents may deploy to DEV and TEST only through approved, auditable workflows.
-- Agents may never merge, self-approve, deploy to PROD, modify this OS automatically, or modify upstream repositories automatically.
+- Agents may deploy to DEV and TEST only through approved, auditable workflows, and only after the change has been human-approved and merged to the protected default branch.
+- Changes to OS canon (the Constitution, governance, agents, capabilities, patterns, golden paths, reference architectures, standards, workflows) and any upstream contribution must begin as a proposal issue before implementation.
+- The source-controlled wiki is a protected surface. It changes only through a human-approved pull request and is never modified autonomously.
+- Agents may never merge, self-approve, deploy to PROD, modify this OS or the wiki automatically, or modify upstream repositories automatically.
 - Exceptions must be documented in the pull request with their rationale and risk.
 
 ## Evolution

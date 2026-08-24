@@ -34,6 +34,12 @@ $requiredFiles = @(
     "CODEOWNERS"
 )
 
+# Documentation under these top-level directories is exempt from the
+# Constitution-reference requirement so repositories created from this template
+# can add their own docs without editing every file. Structural and link checks
+# still apply everywhere. Consumers may extend this list. See TEMPLATE-USAGE.md.
+$constitutionExemptTopDirs = @("consumer", "examples")
+
 foreach ($directory in $requiredDirectories) {
     if (-not (Test-Path (Join-Path $RepositoryRoot $directory) -PathType Container)) {
         $failures.Add("Missing required directory: $directory")
@@ -53,8 +59,10 @@ $markdownFiles = Get-ChildItem $RepositoryRoot -Recurse -File -Filter "*.md" |
 foreach ($file in $markdownFiles) {
     $content = Get-Content $file.FullName -Raw
     $relativeFile = [IO.Path]::GetRelativePath($RepositoryRoot, $file.FullName)
+    $topSegment = ($relativeFile -split "[\\/]")[0]
+    $constitutionExempt = $constitutionExemptTopDirs -contains $topSegment
 
-    if ($content -notmatch "CONSTITUTION\.md") {
+    if (-not $constitutionExempt -and $content -notmatch "CONSTITUTION\.md") {
         $failures.Add("Missing Constitution reference: $relativeFile")
     }
 

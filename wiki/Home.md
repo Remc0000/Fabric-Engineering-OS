@@ -9,7 +9,8 @@ Use these pages as navigation for adopters. Canonical policy and project guidanc
 1. Read the root [README](../README.md) and canonical [Constitution](../CONSTITUTION.md).
 2. Follow [Getting Started](Getting-Started.md) to choose a bootstrap path.
 3. Use the [Operating Model](Operating-Model.md) to understand agent and human responsibilities.
-4. Consult the [Glossary](Glossary.md) and [FAQ](FAQ.md) for shared language and common questions.
+4. Follow the [Data Engineering Lifecycle](Data-Engineering-Lifecycle.md) to map methodology onto governed phases.
+5. Consult the [Glossary](Glossary.md) and [FAQ](FAQ.md) for shared language and common questions.
 
 ## Canonical destinations
 
@@ -18,6 +19,7 @@ Use these pages as navigation for adopters. Canonical policy and project guidanc
 | Principles and hard boundaries | [Constitution](../CONSTITUTION.md) |
 | Decision rights and change process | [Governance](../GOVERNANCE.md) |
 | Repository-wide direction | [Root Roadmap](../ROADMAP.md) |
+| Methodology to governed phases | [Data Engineering Lifecycle](Data-Engineering-Lifecycle.md) |
 | Start a project or feature | [Bootstrap Guides](../bootstrap/README.md) |
 | Contribute | [Contribution Guide](../community/CONTRIBUTING.md) |
 | Maintain or release | [Community Governance](../community/README.md) |

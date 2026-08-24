@@ -7,6 +7,7 @@ Each bundle defines a bounded Copilot team contract: the outcome it owns, the ev
 | Bundle | Use when | Entry point |
 | --- | --- | --- |
 | Source onboarding | Connecting a new batch or streaming source to governed Fabric landing | [Charter](source-onboarding/charter.md) |
+| Metadata-driven ELT | Building shared, metadata-driven Fabric ELT orchestration with governed control tables | [Charter](metadata-driven-elt/charter.md) |
 | New data product | Delivering a reusable medallion data product with named consumers | [Charter](new-data-product/charter.md) |
 | Semantic model | Designing and releasing a governed Power BI semantic model in Fabric | [Charter](semantic-model/charter.md) |
 | Eventhouse RTI | Building low-latency ingestion, KQL storage, analysis, and action | [Charter](eventhouse-rti/charter.md) |
@@ -23,4 +24,4 @@ Each bundle defines a bounded Copilot team contract: the outcome it owns, the ev
 4. Compare results with measurable success criteria and document exceptions.
 5. Stop at every human approval, destructive-change, architecture, security, cost, merge, and production boundary.
 
-All bundles use GitHub Copilot as the runtime, GitHub MCP as the repository interface, and Microsoft Learn as authoritative Microsoft product documentation. Skills for Fabric is preferred expertise; Fabric Accelerator is the primary architecture reference; FMD Framework is the primary implementation reference; ELT Framework is secondary; Fabric Toolbox is optional discovery. Upstream sources are read-only.
+All bundles use GitHub Copilot as the runtime, GitHub MCP as the repository interface, and Microsoft Learn as authoritative Microsoft product documentation. Skills for Fabric is preferred expertise; Fabric Accelerator is the primary architecture reference; FMD Framework is the primary implementation reference; ELT Framework is secondary; Project Osmos is an agentic-execution reference; Fabric Toolbox is optional discovery. Concrete source locations are in the [Source-Grounding registry](../standards/source-grounding.md). Upstream sources are read-only.

@@ -8,7 +8,7 @@ Build a domain-owned, batch-oriented Fabric data product that preserves raw evid
 
 ## Context and source posture
 
-[Fabric Accelerator](https://github.com/microsoft/fabric-accelerator) is the primary architecture reference. It is not copied or automatically synchronized here. Confirm Lakehouse, Warehouse, OneLake, notebook, pipeline, and semantic-model behavior with [Microsoft Learn](https://learn.microsoft.com/fabric/) for the target tenant, region, capacity, and license.
+[Fabric Accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) is the primary architecture reference. It is not copied or automatically synchronized here. Confirm Lakehouse, Warehouse, OneLake, notebook, pipeline, and semantic-model behavior with [Microsoft Learn](https://learn.microsoft.com/fabric/) for the target tenant, region, capacity, and license.
 
 ```mermaid
 flowchart LR

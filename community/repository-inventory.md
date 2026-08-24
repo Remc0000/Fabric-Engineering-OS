@@ -1,6 +1,8 @@
 # Repository Inventory
 
-This inventory is governed by the [Fabric Engineering OS Constitution](CONSTITUTION.md).
+This inventory is governed by the [Fabric Engineering OS Constitution](../CONSTITUTION.md).
+
+> **Maintainer artifact — not inherited.** This is a point-in-time snapshot for maintainers of the canonical OS. It is intentionally kept out of the template root and should be deleted or regenerated in repositories created from this template. See [Template Usage](../TEMPLATE-USAGE.md).
 
 File counts represent files stored **directly** in each folder. Parent-folder totals are not duplicated.
 

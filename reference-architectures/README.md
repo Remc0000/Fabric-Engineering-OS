@@ -1,6 +1,6 @@
 # Reference Architectures
 
-These architectures are governed by the root [Fabric Engineering OS Constitution](../CONSTITUTION.md). [Fabric Accelerator](https://github.com/microsoft/fabric-accelerator) is the primary architecture reference; this repository uses it as a read-only source of architectural insight, does not copy it, and does not claim automatic synchronization. Validate Microsoft Fabric product behavior against [Microsoft Learn](https://learn.microsoft.com/fabric/) before implementation.
+These architectures are governed by the root [Fabric Engineering OS Constitution](../CONSTITUTION.md). The [Fabric Accelerator (unified data foundation, Fabric-only Option 1)](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) is the primary architecture reference; this repository uses it as a read-only source of architectural insight, does not copy it, adopts only its Fabric-native Option 1, and does not claim automatic synchronization. Validate Microsoft Fabric product behavior against [Microsoft Learn](https://learn.microsoft.com/fabric/) before implementation.
 
 | Architecture | Primary outcome |
 | --- | --- |

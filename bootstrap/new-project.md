@@ -48,7 +48,7 @@ Copy this checklist into the project issue or pull request and replace every pla
 ## Required issues and evidence
 
 - [ ] Project charter issue with outcome, scope, owners, acceptance criteria, dependencies, and risks.
-- [ ] Architecture decision record or issue with alternatives and consequences.
+- [ ] [Architecture decision record](../decision-records/TEMPLATE.md) or issue with alternatives and consequences.
 - [ ] Threat/data-governance review with mitigations and exception owners.
 - [ ] Environment-readiness issue for DEV and TEST.
 - [ ] Validation issue or test plan covering quality, security, operations, and rollback.

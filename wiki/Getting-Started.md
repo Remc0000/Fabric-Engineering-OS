@@ -12,6 +12,7 @@ This page routes adopters to canonical instructions rather than reproducing them
 - [ ] Identify accountable human architecture, data, security, service, repository, and release owners.
 - [ ] Validate tenant, region, capacity, licensing, and product assumptions against Microsoft Learn.
 - [ ] Treat Skills for Fabric, Fabric Accelerator, FMD, ELT, and Fabric Toolbox according to the source precedence in the Constitution.
+- [ ] Review the [Microsoft data engineering playbook](https://learn.microsoft.com/en-us/data-engineering/playbook/understanding-data-playbook) and the [Source-Grounding registry](../standards/source-grounding.md) for concrete upstream sources.
 - [ ] Treat all upstream repositories and sources as read-only.
 - [ ] Select an immediately usable [Bootstrap Guide](../bootstrap/README.md).
 - [ ] Create a governing issue, focused branch, evidence plan, and human approval gates.

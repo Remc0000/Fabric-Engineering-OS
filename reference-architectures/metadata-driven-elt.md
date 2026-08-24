@@ -8,7 +8,7 @@ Onboard multiple batch sources through shared, configuration-driven Fabric inges
 
 ## Context and source posture
 
-[Fabric Accelerator](https://github.com/microsoft/fabric-accelerator) is the primary architecture reference; this baseline neither copies nor synchronizes it. Validate Data Factory, Lakehouse, Warehouse, notebook, connection, and monitoring behavior with [Microsoft Learn: Data Factory in Fabric](https://learn.microsoft.com/fabric/data-factory/data-factory-overview).
+[Fabric Accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) is the primary architecture reference; this baseline neither copies nor synchronizes it. Validate Data Factory, Lakehouse, Warehouse, notebook, connection, and monitoring behavior with [Microsoft Learn: Data Factory in Fabric](https://learn.microsoft.com/fabric/data-factory/data-factory-overview).
 
 ```mermaid
 flowchart LR

@@ -29,6 +29,6 @@ The canonical accountability model is [Governance](../GOVERNANCE.md). The summar
 
 ## Source precedence
 
-Do not restate or fork upstream guidance. Apply the canonical precedence in the [Constitution](../CONSTITUTION.md): Microsoft Learn for product truth; Skills for Fabric for preferred expertise; Fabric Accelerator for architecture; FMD for primary implementation; ELT as secondary; Fabric Toolbox for optional discovery. None may be automatically modified by this repository.
+Do not restate or fork upstream guidance. Apply the canonical precedence in the [Constitution](../CONSTITUTION.md): Microsoft Learn for product truth; the [Microsoft data engineering playbook](https://learn.microsoft.com/en-us/data-engineering/playbook/understanding-data-playbook) for methodology; Skills for Fabric for preferred expertise; Fabric Accelerator (unified data foundation, Fabric-only Option 1) for architecture; FMD for primary implementation; ELT as secondary; Project Osmos as an agentic-execution reference; Fabric Toolbox for optional discovery. Concrete source locations are listed in the [Source-Grounding registry](../standards/source-grounding.md). None may be automatically modified by this repository.
 
 For contribution mechanics, use [Contributing](../community/CONTRIBUTING.md). For common interpretations, use the [FAQ](FAQ.md).

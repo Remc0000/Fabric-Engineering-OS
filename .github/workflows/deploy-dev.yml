@@ -29,6 +29,14 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Enforce human-approved source
+        shell: bash
+        run: |
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            echo "::error::DEV deployment must run from the human-approved default branch (main). Merge the reviewed pull request first."
+            exit 1
+          fi
+
       - name: Validate artifact path
         shell: pwsh
         run: |

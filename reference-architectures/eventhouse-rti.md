@@ -8,7 +8,7 @@ Ingest governed event streams into Eventhouse/KQL databases for low-latency anal
 
 ## Context and source posture
 
-[Fabric Accelerator](https://github.com/microsoft/fabric-accelerator) is the primary architecture reference; it is neither copied nor synchronized. Validate Eventstream, Eventhouse, KQL database, Real-Time Dashboard, and Activator behavior with [Microsoft Learn: Real-Time Intelligence](https://learn.microsoft.com/fabric/real-time-intelligence/overview).
+[Fabric Accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) is the primary architecture reference; it is neither copied nor synchronized. Validate Eventstream, Eventhouse, KQL database, Real-Time Dashboard, and [Activator](../capabilities/activator.md) behavior with [Microsoft Learn: Real-Time Intelligence](https://learn.microsoft.com/fabric/real-time-intelligence/overview).
 
 ```mermaid
 flowchart LR
