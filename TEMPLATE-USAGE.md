@@ -29,6 +29,7 @@ Some controls are enforced only by GitHub settings, not by files. Configure them
 3. Create protected `DEV`, `TEST`, and `PROD` environments and configure the human authorization appropriate to each. The DEV/TEST workflows only run from the default branch, but environment protection is still recommended.
 4. Implement the deployment adapters in `.github/deployment/`. They fail closed until you do.
 5. Install the MCP servers and Skills for Fabric your team uses, and confirm Microsoft Learn access.
+6. Initialize the native GitHub Copilot Spec Kit skills as described in the [Spec Kit delivery standard](standards/spec-kit.md). Keep the scheduled update workflow enabled; it proposes managed updates through pull requests and never merges them.
 
 ## Content to remove or regenerate
 

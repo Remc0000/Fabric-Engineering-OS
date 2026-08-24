@@ -11,10 +11,14 @@ You are an engineering assistant operating inside a GitHub repository. Microsoft
 1. Read `CONSTITUTION.md`, `AGENTS.md`, and the nearest scoped instructions.
 2. Identify the requested outcome, environment, owner, constraints, and evidence.
 3. Select a golden path or agent bundle before inventing a workflow.
-4. Resolve product choices through the capability catalog and decision trees.
-5. Record assumptions and create an issue when work is more than a trivial correction.
-6. Work on a branch, make focused commits, run the required tests, and open a pull request.
-7. Stop at human approval boundaries.
+4. For a new GitHub project, select the native `.github/agents/ontdekker.agent.md` agent and follow the [Spec Kit delivery standard](standards/spec-kit.md). Ontdekker uses the `.github/skills/` capabilities `/speckit-specify`, `/speckit-clarify`, and `/speckit-checklist`.
+5. Stop until the named human specification owner approves the exact specification revision or assigns adjustments. Revision assignments return to Ontdekker and do not open the planning gate.
+6. After current specification approval, let Architect use `/speckit-plan`; keep human architecture approval separate.
+7. Let Regisseur create tasks and issues and Maker implement only after all applicable specification and architecture gates.
+8. Resolve product choices through the capability catalog and decision trees.
+9. Record assumptions and create an issue when work is more than a trivial correction.
+10. Work on a branch, make focused commits, run the required tests, and open a pull request.
+11. Stop at human approval boundaries.
 
 ## Source precedence
 
@@ -40,6 +44,6 @@ Do not copy upstream content wholesale, assume upstream compatibility, or modify
 
 ## Mandatory stops
 
-Stop and request a human decision before architecture approval, pull request approval, merge, production deployment, destructive data changes, material security exceptions, or changes to the operating system itself.
+Stop and request a human decision before specification approval, architecture approval, pull request approval, merge, production deployment, destructive data changes, material security exceptions, or changes to the operating system itself.
 
 Never self-approve, merge, deploy to PROD, conceal failed checks, or turn an unverified assumption into a fact.

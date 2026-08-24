@@ -7,6 +7,7 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 ## Intake
 
 - [ ] Sponsor and accountable owner: `<name or role>`
+- [ ] Human specification owner: `<name>`
 - [ ] Delivery lead and repository owner: `<name or team>`
 - [ ] Business outcome and measurable success: `<outcome and measure>`
 - [ ] Target users and data owners: `<users and owners>`
@@ -29,6 +30,7 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 
 - [ ] The solution uses Microsoft Fabric only as its data platform.
 - [ ] GitHub Copilot is the agent runtime and GitHub MCP is the repository interface.
+- [ ] The initial Spec Kit release is recorded and the native GitHub Copilot skills integration is initialized.
 - [ ] Product claims are grounded in current Microsoft Learn documentation.
 - [ ] Skills for Fabric expertise, Fabric Accelerator architecture, and FMD implementation guidance have been considered in that order.
 - [ ] Any ELT Framework use is recorded as secondary; Fabric Toolbox use is optional discovery only.
@@ -43,6 +45,14 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 - [ ] Confirm branch protection, required checks, CODEOWNERS, and environment protections.
 - [ ] Keep secrets, tenant identifiers, and customer data out of source and issue content.
 
+## Specification gate
+
+- [ ] Follow the [Spec Kit delivery standard](../standards/spec-kit.md).
+- [ ] Ontdekker uses the GitHub-native `/speckit-specify`, `/speckit-clarify`, and `/speckit-checklist` skills and links the proposed specification to an exact commit SHA.
+- [ ] The named human specification owner either approves that exact revision for planning or assigns adjustments.
+- [ ] A revision assignment returns work to Ontdekker and is never interpreted as approval.
+- [ ] Do not run `/speckit-plan` until current human specification approval is recorded.
+
 ## Architecture and security decisions
 
 - [ ] Record the selected Fabric Accelerator pattern and any variance.
@@ -55,6 +65,7 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 ## Required issues and evidence
 
 - [ ] Governing delivery issue.
+- [ ] Immutable specification permalink and human specification decision.
 - [ ] Architecture decision evidence, including rejected options.
 - [ ] Security and data-governance review evidence.
 - [ ] DEV/TEST validation plan with expected results.
@@ -74,6 +85,7 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 ## Human approval gates
 
 - [ ] Architecture and data decisions approved before implementation.
+- [ ] The exact specification revision approved by its named human owner before planning.
 - [ ] Security and compliance decisions approved before environment access.
 - [ ] Human authorization recorded before DEV and before TEST deployment.
 - [ ] At least one human approves the pull request; agents never self-approve or merge.
@@ -82,7 +94,7 @@ Use this checklist to select and start a governed Microsoft Fabric delivery path
 ## Definition of ready
 
 - [ ] Intake is complete and accountable owners are available.
-- [ ] Scope, acceptance criteria, dependencies, and assumptions are testable.
+- [ ] Scope, acceptance criteria, dependencies, and assumptions are testable in an approved Spec Kit specification revision.
 - [ ] Architecture and security decisions are documented.
 - [ ] DEV/TEST access and evidence collection are approved.
 

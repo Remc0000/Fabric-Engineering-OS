@@ -1,0 +1,218 @@
+name: Propose Spec Kit update
+
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+
+concurrency:
+  group: spec-kit-update
+  cancel-in-progress: false
+
+jobs:
+  prepare:
+    name: Prepare restricted update
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      changed: ${{ steps.patch.outputs.changed }}
+      release: ${{ steps.release.outputs.tag }}
+    steps:
+      - name: Check out default branch without write credentials
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Detect initialized Copilot integration
+        id: integration
+        shell: bash
+        run: |
+          if [[ -f ".specify/integrations/copilot.manifest.json" || -f ".specify/integration.json" ]]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "Spec Kit Copilot integration is not initialized; no update is required." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Detect existing update pull request
+        if: steps.integration.outputs.enabled == 'true'
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          count="$(gh pr list --state open --search 'in:title "[Automation] Update Spec Kit"' --json number --jq 'length')"
+          if [[ "$count" -gt 0 ]]; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            echo "An open Spec Kit update pull request already exists; this run made no changes." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Resolve latest stable release
+        if: steps.integration.outputs.enabled == 'true' && steps.existing.outputs.found == 'false'
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          tag="$(gh api repos/github/spec-kit/releases/latest --jq '.tag_name')"
+          if [[ ! "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+([.-][0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Invalid Spec Kit release tag: $tag"
+            exit 1
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
+      - name: Set up uv
+        if: steps.integration.outputs.enabled == 'true' && steps.existing.outputs.found == 'false'
+        uses: astral-sh/setup-uv@v6
+
+      - name: Install resolved Spec Kit release
+        if: steps.integration.outputs.enabled == 'true' && steps.existing.outputs.found == 'false'
+        env:
+          SPEC_KIT_TAG: ${{ steps.release.outputs.tag }}
+        shell: bash
+        run: uv tool install specify-cli --from "git+https://github.com/github/spec-kit.git@${SPEC_KIT_TAG}"
+
+      - name: Upgrade native Copilot integration without write credentials
+        if: steps.integration.outputs.enabled == 'true' && steps.existing.outputs.found == 'false'
+        shell: bash
+        run: |
+          specify integration status
+          specify integration upgrade copilot --integration-options="--skills"
+          specify extension update
+          specify --version
+
+      - name: Restrict update to managed Spec Kit paths
+        if: steps.integration.outputs.enabled == 'true' && steps.existing.outputs.found == 'false'
+        id: patch
+        shell: bash
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Spec Kit is already current." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              .github/skills/speckit-*/*|\
+              .github/hooks/speckit.json|\
+              .specify/integration.json|\
+              .specify/init-options.json|\
+              .specify/extensions.yml|\
+              .specify/integrations/*|\
+              .specify/scripts/*|\
+              .specify/templates/*|\
+              .specify/extensions/*)
+                ;;
+              *)
+                echo "::error::Spec Kit update attempted to modify prohibited path: $path"
+                exit 1
+                ;;
+            esac
+          done < <(git diff --cached --name-only -z)
+
+          git diff --cached --binary --no-ext-diff > "${RUNNER_TEMP}/spec-kit-update.patch"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Upload restricted update patch
+        if: steps.patch.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: spec-kit-update
+          path: ${{ runner.temp }}/spec-kit-update.patch
+          if-no-files-found: error
+          retention-days: 3
+
+  publish:
+    name: Publish review pull request
+    needs: prepare
+    if: needs.prepare.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - name: Check out default branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download restricted update patch
+        uses: actions/download-artifact@v4
+        with:
+          name: spec-kit-update
+          path: ${{ runner.temp }}
+
+      - name: Apply and revalidate restricted patch
+        shell: bash
+        run: |
+          git apply --index --binary "${RUNNER_TEMP}/spec-kit-update.patch"
+
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              .github/skills/speckit-*/*|\
+              .github/hooks/speckit.json|\
+              .specify/integration.json|\
+              .specify/init-options.json|\
+              .specify/extensions.yml|\
+              .specify/integrations/*|\
+              .specify/scripts/*|\
+              .specify/templates/*|\
+              .specify/extensions/*)
+                ;;
+              *)
+                echo "::error::Downloaded Spec Kit patch contains prohibited path: $path"
+                exit 1
+                ;;
+            esac
+          done < <(git diff --cached --name-only -z)
+
+          for skill in \
+            .github/skills/speckit-specify/SKILL.md \
+            .github/skills/speckit-clarify/SKILL.md \
+            .github/skills/speckit-checklist/SKILL.md \
+            .github/skills/speckit-plan/SKILL.md; do
+            if [[ ! -f "$skill" ]]; then
+              echo "::error::Missing native Spec Kit skill after upgrade: $skill"
+              exit 1
+            fi
+          done
+
+      - name: Validate repository governance
+        shell: pwsh
+        run: ./.github/scripts/validate-content.ps1
+
+      - name: Commit restricted update
+        id: branch
+        env:
+          SPEC_KIT_TAG: ${{ needs.prepare.outputs.release }}
+        shell: bash
+        run: |
+          branch="automation/spec-kit-update-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -m "chore: update Spec Kit to ${SPEC_KIT_TAG}"
+          git push --set-upstream origin "$branch"
+          echo "name=$branch" >> "$GITHUB_OUTPUT"
+
+      - name: Open human-reviewed update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ steps.branch.outputs.name }}
+          SPEC_KIT_TAG: ${{ needs.prepare.outputs.release }}
+        shell: bash
+        run: |
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH" \
+            --title "[Automation] Update Spec Kit to ${SPEC_KIT_TAG}" \
+            --body "Updates manifest-managed GitHub Copilot skills and allowed Spec Kit assets to ${SPEC_KIT_TAG}. The update was generated without repository write credentials and rejected changes outside the managed-path allowlist. Specifications, plans, tasks, the project constitution, source code, and approval records are excluded. Human review and merge remain required."
+          gh workflow run quality-gates.yml --ref "$BRANCH"
