@@ -43,6 +43,10 @@ Human business/data and architecture owners approve use case and grounding; secu
 
 Disable user access, restore the last accepted instructions/source set, and preserve evaluation evidence. Exit when source quality, authorization, or answer accuracy drops below the accepted threshold and cannot be restored within the support objective.
 
+## Reference sources
+
+The Fabric-only Option 1 of the [unified data foundation accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) includes a working Fabric Data Agent over governed domain data; use it as read-only grounding-design provenance rather than copied configuration, and confirm current agent behavior and limitations in Microsoft Learn. See the [Source-Grounding registry](../standards/source-grounding.md).
+
 ## Related guidance
 
 [Data agent capability](../capabilities/data-agent.md) · [Data agent architecture](../reference-architectures/data-agent.md) · [Grounded agent pattern](../patterns/grounded-data-agent.md) · [Governed semantic layer](../patterns/governed-semantic-layer.md)

@@ -43,6 +43,10 @@ Human data/semantic and architecture owners approve meaning and model design; se
 
 Restore the prior model artifact and environment binding; disable or revert incompatible refresh/configuration. Preserve a compatibility window or parallel version for breaking changes, then retire only after human-confirmed consumer migration.
 
+## Reference sources
+
+The Fabric-only Option 1 of the [unified data foundation accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) ships governed Power BI semantic models and dashboards over medallion gold; use them as read-only design provenance for measures, relationships, and endorsement rather than copied artifacts, and validate model, refresh, and security behavior in Microsoft Learn. See the [Source-Grounding registry](../standards/source-grounding.md).
+
 ## Related guidance
 
 [Semantic model capability](../capabilities/semantic-model.md) · [Data product architecture](../reference-architectures/data-product.md) · [Governed semantic layer](../patterns/governed-semantic-layer.md) · [Data agent golden path](data-agent.md)

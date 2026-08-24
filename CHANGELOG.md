@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Changed
 
 - Bound the reference-source labels to concrete upstream repositories in a Source-Grounding registry: the Fabric-only unified data foundation accelerator (Option 1), Skills for Fabric, FMD Framework, the Microsoft data engineering playbook, and Project Osmos as an agentic-execution reference; corrected stale `microsoft/fabric-accelerator` links.
+- Wove concrete, governed source references into the data-product, metadata-driven-elt, data-agent, source-onboarding, and semantic-model golden paths and into the source-onboarding, new-data-product, and metadata-driven-elt bundle prompts.
 - Constitution, Governance, `AGENTS.md`, and Copilot instructions now protect the wiki as a surface and require a proposal issue before OS-canon or upstream changes.
 - DEV and TEST deployment workflows refuse to run outside the protected default branch.
 - The content-validation gate exempts consumer documentation directories from the Constitution-reference requirement.

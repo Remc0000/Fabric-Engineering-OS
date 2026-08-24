@@ -43,6 +43,10 @@ Human data and architecture owners approve contract and topology; security/servi
 
 Stop gold publication, retain bronze and checkpoints, restore the prior compatible transformation and contract, and replay affected partitions. Deprecation requires a human-approved consumer migration window; deletion follows retention and access policy.
 
+## Reference sources
+
+Study the Fabric-only Option 1 of the [unified data foundation accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) as read-only provenance for a concrete medallion product with shared (customer, product), finance, and sales domain schemas; adopt only its Fabric-native Option 1, copy no artifacts, and validate behavior against Microsoft Learn. [Project Osmos](https://github.com/microsoft/project-osmos) illustrates governed agent-run silver and gold transformations that agents may follow in DEV/TEST only after human approval, never against PROD. See the [Source-Grounding registry](../standards/source-grounding.md).
+
 ## Related guidance
 
 [Lakehouse capability](../capabilities/lakehouse.md) · [Warehouse capability](../capabilities/warehouse.md) · [Data product architecture](../reference-architectures/data-product.md) · [Medallion pattern](../patterns/medallion-data-product.md) · [Contract-first pattern](../patterns/contract-first-data-product.md)

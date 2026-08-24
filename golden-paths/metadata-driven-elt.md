@@ -43,6 +43,10 @@ Human architecture and platform owners approve the shared design; source/data/se
 
 Pause affected metadata entries, preserve run/checkpoint state, restore prior orchestrator and compatible metadata, then replay from the last safe checkpoint. Move an exceptional source to a dedicated path through a reviewed [Fabric Decision Record](../decision-records/TEMPLATE.md).
 
+## Reference sources
+
+Ground the metadata contract and orchestration in the [FMD Framework](https://github.com/edkreuk/FMD_FRAMEWORK) as the primary implementation reference and the Fabric-only Option 1 of the [unified data foundation accelerator](https://github.com/microsoft/unified-data-foundation-with-fabric-solution-accelerator) for architecture. [Project Osmos](https://github.com/microsoft/project-osmos) is a governed agent-execution reference for building and testing ingestion notebooks; agents may apply it in DEV/TEST only after human approval and never against PROD. All are read-only; validate product behavior against Microsoft Learn. See the [Source-Grounding registry](../standards/source-grounding.md).
+
 ## Related guidance
 
 [Pipeline capability](../capabilities/pipeline.md) · [Metadata-driven ELT architecture](../reference-architectures/metadata-driven-elt.md) · [Metadata orchestration pattern](../patterns/metadata-driven-orchestration.md) · [Idempotent processing](../patterns/idempotent-processing.md)
