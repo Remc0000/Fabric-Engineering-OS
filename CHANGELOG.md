@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - `TEMPLATE-USAGE.md` describing canonical-versus-consumer content and required settings.
 - Assurance role boundary matrix in `agents/README.md`.
 - `.github/CONTRIBUTING.md` pointer so GitHub surfaces contribution guidance.
+- `Data Engineering Lifecycle` wiki page mapping the Microsoft data engineering playbook onto the governed, Fabric-only lifecycle.
 
 ### Changed
 
