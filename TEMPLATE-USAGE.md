@@ -17,8 +17,25 @@ Treat the following as canonical guidance. Keep it, and prefer proposing improve
 
 Create your solution's own content and keep it separate from OS canon:
 
-- Place solution documentation under a `consumer/` or `examples/` directory. These directories are exempt from the Constitution-reference check in `.github/scripts/validate-content.ps1`; extend `$constitutionExemptTopDirs` if you use other paths.
+- Place solution documentation under a `consumer/` or `examples/` directory. These directories are exempt from the Constitution-reference check in `.github/scripts/validate-content.ps1`.
 - Keep source, notebooks, pipelines, and item definitions in your solution's own folders.
+
+## Validation gate behavior
+
+The content validator keeps canonical OS guidance governed without forcing the same header into ordinary solution documentation:
+
+- It requires a `CONSTITUTION.md` reference in Markdown outside the configured exempt top-level directories.
+- It checks local Markdown links in all directories, including exempt consumer content. Relative targets must exist in the checked-out repository; web, email, and same-page anchor links are not resolved locally.
+- It validates the required OS directory/file structure and selected governance invariants.
+- It does not validate external URL availability or Markdown syntax beyond the local-link patterns it recognizes.
+
+The default exempt directories are `consumer/` and `examples/`. Override the complete list in a consumer repository without editing the script:
+
+```powershell
+.\.github\scripts\validate-content.ps1 -ConstitutionExemptTopDirs @("consumer", "examples", "docs")
+```
+
+Keep canonical OS directories out of the exemption list. Run the command locally after changing documentation; the same default invocation runs in the quality gate.
 
 ## Required configuration after templating
 
