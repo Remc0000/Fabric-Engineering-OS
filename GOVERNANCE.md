@@ -29,7 +29,7 @@ One person may hold multiple roles, but an agent cannot satisfy a human approval
 
 ## Change process
 
-1. Capture intent and owner in an issue. Changes to OS canon (Constitution, governance, agents, capabilities, patterns, golden paths, reference architectures, standards, workflows), the wiki, or any upstream contribution must start as a **proposal issue** before implementation.
+1. Capture intent and owner in an issue. Changes to OS canon (Constitution, governance, agents, capabilities, patterns, golden paths, reference architectures, standards, workflows), the wiki, or any upstream contribution must start with the dedicated [OS canon proposal form](.github/ISSUE_TEMPLATE/os-canon-proposal.yml) before implementation. Use the architecture-change form for solution architecture that does not alter OS canon and the feature form for ordinary consumer work.
 2. Select the relevant bundle or golden path.
 3. Document decisions, risks, tests, and environment impact.
 4. Implement on a branch and open a pull request.
