@@ -14,7 +14,7 @@ All contributions are governed by the [Fabric Engineering OS Constitution](../CO
 ## Contribution workflow
 
 1. Search existing issues and the [Ideas Backlog](IDEAS-BACKLOG.md).
-2. Open or claim an issue describing the problem, outcome, scope, owner, acceptance criteria, risks, and evidence plan.
+2. Open or claim an issue describing the problem, outcome, scope, owner, acceptance criteria, risks, and evidence plan. Use the [OS canon proposal form](../.github/ISSUE_TEMPLATE/os-canon-proposal.yml) before changing OS canon, the source-controlled wiki, or proposing an upstream contribution; use the architecture-change form for consumer-solution architecture and the feature form for ordinary consumer work.
 3. Obtain human direction before material architecture, security, data, compliance, cost, or governance work.
 4. Create a focused branch from the current protected default branch using `<type>/<issue>-<slug>`.
 5. Make the smallest coherent change and update affected navigation.

@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- A dedicated OS-canon proposal issue form for governance, agents, capabilities, patterns, golden paths, standards, workflows, wiki changes, and upstream contributions.
 - Capability guides for Activator, Dataflows Gen2, and Variable Libraries.
 - `metadata-driven-elt` agent bundle aligned to its golden path and reference architecture.
 - Fabric Decision Record (FDR) system under `decision-records/` with a reusable template.
