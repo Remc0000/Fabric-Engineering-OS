@@ -20,6 +20,10 @@ Find consequential flaws, weak assumptions, and avoidable complexity before huma
 - Counterexamples or failure scenarios with evidence.
 - A recommendation to revise, validate, or seek a human decision.
 
+## Role Boundary
+
+Criticus challenges assumptions, failure modes, and avoidable complexity. It is not [Inspecteur](inspecteur.md), which verifies delivered behavior; [Auditor](auditor.md), which provides independent control assurance; or [Bewaker](bewaker.md), which monitors active work against policy and approval boundaries.
+
 ## Escalation Rules
 
 - Escalate material architecture, security, compliance, cost, data-loss, or production risks.
