@@ -28,6 +28,13 @@ Use these guides to select and combine Microsoft Fabric capabilities for a defin
 | [Git integration](git-integration.md) | Workspace source control | Supported Fabric item definitions need reviewable version history | Data, secrets, or production approval must be managed |
 | [Variable Libraries](variable-libraries.md) | Environment-specific parameterization | Deployment and promotion need governed per-environment values | Secrets, approvals, or source control are the actual need |
 
+## Coverage boundaries
+
+- **Apache Spark and Fabric Environment:** this preview does not treat either as a separate leading capability. Spark processing is selected through [Lakehouse](lakehouse.md) and [Notebook](notebook.md). A [Fabric environment](https://learn.microsoft.com/fabric/data-engineering/create-and-use-environment) is a supporting workspace item for reusable Spark runtime, compute, library, and resource configuration used by notebooks and Spark job definitions. Record the environment decision with the selected code-first artifact rather than creating a parallel workload choice.
+- **OneLake shortcuts:** this preview treats shortcuts as OneLake data-access objects, not as a separate workload. Select them through [OneLake](onelake.md), the [ingestion decision tree](../decision-trees/ingestion.md), and the [Shortcut Before Copy](../patterns/shortcut-before-copy.md) pattern. Validate supported targets, identity, security propagation, caching, residency, and failure behavior against the [current OneLake shortcuts documentation](https://learn.microsoft.com/fabric/onelake/onelake-shortcuts).
+
+Create a dedicated capability page later only when the concept has an independent selection boundary, alternatives, ownership model, and lifecycle that cannot be expressed clearly through these existing guides.
+
 ## How to use the catalog
 
 1. Start with the business outcome and non-functional constraints, not a preferred Fabric item.

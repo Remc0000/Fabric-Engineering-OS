@@ -2,7 +2,7 @@
 
 This guide is governed by the [Fabric Engineering OS Constitution](../CONSTITUTION.md).
 
-> **Scope/status:** Runtime versions, libraries, language support, session behavior, source control, and capacity characteristics vary over time; pin and validate them using Microsoft Learn and target environments.
+> **Scope/status:** Runtime versions, libraries, language support, session behavior, source control, and capacity characteristics vary over time; pin and validate them using Microsoft Learn and target environments. Use a [Fabric environment](https://learn.microsoft.com/fabric/data-engineering/create-and-use-environment) when reusable Spark runtime, compute, library, or resource configuration is required.
 
 ## Purpose
 
@@ -41,6 +41,7 @@ Select a Fabric notebook as a code-first artifact for interactive exploration, S
 ## Decision Drivers
 
 - Language, runtime, library, and compute requirements.
+- Whether a governed Fabric environment or workspace default must make Spark configuration reproducible across notebooks and Spark job definitions.
 - Reproducibility, modularity, parameterization, and testing.
 - Interactive versus scheduled execution.
 - Data locality, security, performance, and cost.
