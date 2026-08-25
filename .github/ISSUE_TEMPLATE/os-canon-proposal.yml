@@ -1,0 +1,56 @@
+name: OS canon proposal
+description: Propose a governed change to Fabric Engineering OS, its wiki, or an upstream contribution.
+title: "[OS proposal]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Use this form before implementing a change to OS canon, the source-controlled wiki, or an upstream contribution. The proposal is governed by [CONSTITUTION.md](/CONSTITUTION.md) and requires human approval through a pull request."
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Governed surface
+      options:
+        - Constitution or governance
+        - Agent or agent bundle
+        - Capability or decision tree
+        - Pattern, golden path, or reference architecture
+        - Standard, workflow, or bootstrap guidance
+        - Source-controlled wiki
+        - Upstream contribution
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and evidence
+      description: Describe the current gap and link the evidence that demonstrates it.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Proposed outcome and scope
+      description: State the measurable outcome, affected files, explicit exclusions, and accountable owner.
+    validations:
+      required: true
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and migration
+      description: Explain effects on existing consumers, templates, governed contracts, and any migration or deprecation path.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks, controls, and rollback
+      description: Include security, data, compliance, cost, operational, and governance impacts or an explicit no-impact rationale.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance and validation evidence
+      description: List objective acceptance criteria, required checks, Microsoft Learn grounding, and human decision owners.
+    validations:
+      required: true
