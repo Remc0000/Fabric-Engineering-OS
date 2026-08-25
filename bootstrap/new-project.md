@@ -30,6 +30,7 @@ Copy this checklist into the project issue or pull request and replace every pla
 
 ## Repository and branch steps
 
+- [ ] Optionally run the [project bootstrap helper](Initialize-FabricProject.ps1) in its default `Plan` mode, review every proposed path and manual prerequisite, then use `-Mode Apply` to create consumer scaffolding.
 - [ ] Create the repository from the approved template or select an existing empty repository.
 - [ ] Add owners, CODEOWNERS, branch protection, required checks, and protected DEV/TEST environments.
 - [ ] Create a project bootstrap issue: `<issue URL>`.

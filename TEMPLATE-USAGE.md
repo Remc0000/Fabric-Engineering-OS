@@ -44,12 +44,13 @@ Freshness metadata is additive and never replaces current Microsoft Learn review
 
 Some controls are enforced only by GitHub settings, not by files. Configure them and re-verify:
 
-1. Replace `CODEOWNERS` with your repository's real owners.
-2. Set branch protection on the default branch: require a pull request, the `Required repository files` status check, and — unless you consciously accept the risk — at least one human approval and CODEOWNERS review.
-3. Create protected `DEV`, `TEST`, and `PROD` environments and configure the human authorization appropriate to each. The DEV/TEST workflows only run from the default branch, but environment protection is still recommended.
-4. Implement the deployment adapters in `.github/deployment/`. They fail closed until you do.
-5. Install the MCP servers and Skills for Fabric your team uses, and confirm Microsoft Learn access.
-6. Initialize the native GitHub Copilot Spec Kit skills as described in the [Spec Kit delivery standard](standards/spec-kit.md). Keep the scheduled update workflow enabled; it proposes managed updates through pull requests and never merges them.
+1. Optionally use the [project bootstrap helper](bootstrap/Initialize-FabricProject.ps1) in its default no-write `Plan` mode, then explicitly select `Apply` after reviewing its consumer files and manual prerequisites.
+2. Replace `CODEOWNERS` with your repository's real owners.
+3. Set branch protection on the default branch: require a pull request, the `Required repository files` status check, and — unless you consciously accept the risk — at least one human approval and CODEOWNERS review.
+4. Create protected `DEV`, `TEST`, and `PROD` environments and configure the human authorization appropriate to each. The DEV/TEST workflows only run from the default branch, but environment protection is still recommended.
+5. Implement the deployment adapters in `.github/deployment/`. They fail closed until you do.
+6. Install the MCP servers and Skills for Fabric your team uses, and confirm Microsoft Learn access.
+7. Initialize the native GitHub Copilot Spec Kit skills as described in the [Spec Kit delivery standard](standards/spec-kit.md). Keep the scheduled update workflow enabled; it proposes managed updates through pull requests and never merges them.
 
 ## Content to remove or regenerate
 

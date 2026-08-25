@@ -25,6 +25,10 @@ jobs:
         shell: pwsh
         run: ./.github/scripts/validate-content.ps1
 
+      - name: Test governed project bootstrap helper
+        shell: pwsh
+        run: ./.github/scripts/test-bootstrap-helper.ps1
+
       - name: Test guidance freshness validation
         shell: pwsh
         run: ./.github/scripts/test-freshness-validation.ps1
