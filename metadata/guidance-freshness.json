@@ -1,0 +1,53 @@
+{
+  "$schema": "./guidance-freshness.schema.json",
+  "schemaVersion": "1.0.0",
+  "entries": [
+    {
+      "path": "capabilities/notebook.md",
+      "contentType": "capability",
+      "status": "preview",
+      "owner": "Fabric Engineering OS maintainers",
+      "lastValidated": "2026-08-25",
+      "reviewBy": "2027-02-21",
+      "sources": [
+        "https://learn.microsoft.com/fabric/data-engineering/how-to-use-notebook",
+        "https://learn.microsoft.com/fabric/data-engineering/create-and-use-environment"
+      ]
+    },
+    {
+      "path": "patterns/shortcut-before-copy.md",
+      "contentType": "pattern",
+      "status": "preview",
+      "owner": "Fabric Engineering OS maintainers",
+      "lastValidated": "2026-08-25",
+      "reviewBy": "2027-02-21",
+      "sources": [
+        "https://learn.microsoft.com/fabric/onelake/onelake-shortcuts"
+      ]
+    },
+    {
+      "path": "golden-paths/metadata-driven-elt.md",
+      "contentType": "golden-path",
+      "status": "preview",
+      "owner": "Fabric Engineering OS maintainers",
+      "lastValidated": "2026-08-25",
+      "reviewBy": "2027-02-21",
+      "sources": [
+        "https://learn.microsoft.com/fabric/data-factory/pipeline-overview",
+        "https://learn.microsoft.com/fabric/data-engineering/how-to-use-notebook"
+      ]
+    },
+    {
+      "path": "reference-architectures/data-product.md",
+      "contentType": "reference-architecture",
+      "status": "preview",
+      "owner": "Fabric Engineering OS maintainers",
+      "lastValidated": "2026-08-25",
+      "reviewBy": "2027-02-21",
+      "sources": [
+        "https://learn.microsoft.com/fabric/fundamentals/microsoft-fabric-overview",
+        "https://learn.microsoft.com/fabric/data-engineering/lakehouse-overview"
+      ]
+    }
+  ]
+}
