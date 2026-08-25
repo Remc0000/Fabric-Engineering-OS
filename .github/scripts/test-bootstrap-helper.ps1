@@ -68,7 +68,13 @@ try {
         @((Get-ChildItem $freshProject -File)).Count -ne 4 -or
         -not (Test-Path (Join-Path $freshProject ".fabric-bootstrap-manifest.json"))
     ) {
-        throw "Fresh apply did not create the expected files and ownership manifest."
+        $createdFiles = if (Test-Path $freshProject -PathType Container) {
+            @((Get-ChildItem $freshProject -Force | ForEach-Object Name)) -join ", "
+        }
+        else {
+            "<project directory absent>"
+        }
+        throw "Fresh apply did not create the expected files and ownership manifest. Exit code: $($apply.ExitCode). Files: $createdFiles. Output: $($apply.Output)"
     }
     $generatedEvidence = [IO.File]::ReadAllText((Join-Path $freshProject "bootstrap-evidence.md"))
     $generatedReadme = [IO.File]::ReadAllText((Join-Path $freshProject "README.md"))
