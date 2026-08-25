@@ -26,6 +26,7 @@ $requiredFiles = @(
     "README.md",
     "CONSTITUTION.md",
     "AGENTS.md",
+    "bootstrap\Initialize-FabricProject.ps1",
     "README-FOR-GITHUB-COPILOT.md",
     "README-FOR-MAINTAINER.md",
     "ROADMAP.md",
