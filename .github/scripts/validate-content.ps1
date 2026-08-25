@@ -2,7 +2,8 @@
 param(
     [string]$RepositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")),
     [string[]]$ConstitutionExemptTopDirs = @("consumer", "examples"),
-    [switch]$SkipFreshnessValidation
+    [switch]$SkipFreshnessValidation,
+    [switch]$SkipCatalogValidation
 )
 
 $ErrorActionPreference = "Stop"
@@ -44,6 +45,14 @@ if (-not $SkipFreshnessValidation) {
         "metadata\guidance-freshness.json",
         "metadata\guidance-freshness.schema.json",
         "standards\guidance-freshness.md"
+    )
+}
+
+if (-not $SkipCatalogValidation) {
+    $requiredFiles += @(
+        "metadata\os-catalog.json",
+        "metadata\os-catalog.schema.json",
+        "standards\machine-readable-catalog.md"
     )
 }
 
@@ -178,7 +187,14 @@ if ($failures.Count -gt 0) {
 }
 
 if (-not $SkipFreshnessValidation) {
-    & (Join-Path $PSScriptRoot "validate-freshness.ps1") -RepositoryRoot $RepositoryRoot
+    & pwsh -NoProfile -File (Join-Path $PSScriptRoot "validate-freshness.ps1") -RepositoryRoot $RepositoryRoot
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
+}
+
+if (-not $SkipCatalogValidation) {
+    & pwsh -NoProfile -File (Join-Path $PSScriptRoot "validate-os-catalog.ps1") -RepositoryRoot $RepositoryRoot
     if ($LASTEXITCODE -ne 0) {
         exit $LASTEXITCODE
     }
