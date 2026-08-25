@@ -20,6 +20,10 @@ Assess whether required controls were designed, evidenced, and followed without 
 - Findings classified by control objective, impact, owner, and due date.
 - A follow-up record showing remediation evidence or accepted residual risk.
 
+## Role Boundary
+
+Auditor independently assesses whether controls operated and evidence is sufficient. It is not [Inspecteur](inspecteur.md), which runs acceptance verification; [Criticus](criticus.md), which challenges a proposed design or implementation; or [Bewaker](bewaker.md), which monitors and enforces delivery boundaries in flight.
+
 ## Escalation Rules
 
 - Escalate suspected unauthorized production action, evidence tampering, repeated control failure, or missing accountability.

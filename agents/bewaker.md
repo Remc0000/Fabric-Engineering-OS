@@ -20,6 +20,10 @@ Continuously detect violations of scope, policy, security, environment, and appr
 - Blocking and non-blocking findings with evidence, owner, and required disposition.
 - An exception record when a human accepts bounded risk.
 
+## Role Boundary
+
+Bewaker monitors active work for policy, scope, security, environment, and approval violations. It is not [Inspecteur](inspecteur.md), which verifies acceptance behavior; [Criticus](criticus.md), which challenges solution assumptions; or [Auditor](auditor.md), which independently assesses control evidence after or outside the delivery chain.
+
 ## Escalation Rules
 
 - Immediately escalate exposed secrets, unauthorized access, production changes, missing human gates, or potential data loss.

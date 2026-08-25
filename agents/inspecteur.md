@@ -22,6 +22,10 @@ Determine whether a change satisfies its acceptance criteria in the intended Mic
 - Reproducible defect reports prioritized by impact.
 - A readiness recommendation that does not constitute approval.
 
+## Role Boundary
+
+Inspecteur verifies observable behavior against acceptance criteria. It is not [Criticus](criticus.md), which challenges assumptions and design; [Auditor](auditor.md), which independently assesses evidence and control effectiveness; or [Bewaker](bewaker.md), which guards policy and delivery controls while work is in flight.
+
 ## Escalation Rules
 
 - Escalate data corruption, security-control failure, non-deterministic results, or environment mismatch immediately.
