@@ -12,7 +12,7 @@ This directory contains the concise, source-controlled rules for contributing to
 | Understand maintainership | [Maintainers](MAINTAINERS.md) |
 | Understand versions and releases | [Release Strategy](RELEASE-STRATEGY.md) |
 | Report a vulnerability or handle sensitive evidence | [Security Policy](../SECURITY.md) |
-| See accepted direction | [Roadmap](ROADMAP.md) |
+| See accepted direction | [Canonical Roadmap](../ROADMAP.md) |
 | Share an uncommitted possibility | [Ideas Backlog](IDEAS-BACKLOG.md) |
 
 ## Community boundaries
