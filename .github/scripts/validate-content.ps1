@@ -1,7 +1,8 @@
 [CmdletBinding()]
 param(
     [string]$RepositoryRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")),
-    [string[]]$ConstitutionExemptTopDirs = @("consumer", "examples")
+    [string[]]$ConstitutionExemptTopDirs = @("consumer", "examples"),
+    [switch]$SkipFreshnessValidation
 )
 
 $ErrorActionPreference = "Stop"
@@ -36,6 +37,15 @@ $requiredFiles = @(
     "CODEOWNERS",
     "standards\spec-kit.md"
 )
+
+if (-not $SkipFreshnessValidation) {
+    $requiredDirectories += "metadata"
+    $requiredFiles += @(
+        "metadata\guidance-freshness.json",
+        "metadata\guidance-freshness.schema.json",
+        "standards\guidance-freshness.md"
+    )
+}
 
 # Documentation under these top-level directories is exempt from the
 # Constitution-reference requirement so repositories created from this template
@@ -165,6 +175,13 @@ foreach ($file in $markdownFiles) {
 if ($failures.Count -gt 0) {
     $failures | Sort-Object -Unique | ForEach-Object { Write-Host "::error::$_" }
     exit 1
+}
+
+if (-not $SkipFreshnessValidation) {
+    & (Join-Path $PSScriptRoot "validate-freshness.ps1") -RepositoryRoot $RepositoryRoot
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
 }
 
 Write-Host "Validated $($markdownFiles.Count) Markdown files and repository structure."

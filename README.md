@@ -54,6 +54,7 @@ Agents must never merge, self-approve, deploy to PROD, modify this OS automatica
 | [`standards/`](standards/README.md) | Engineering and governance standards |
 | [`decision-records/`](decision-records/README.md) | Fabric Decision Records and template |
 | [`decision-trees/`](decision-trees/README.md) | Bounded decision support |
+| [`metadata/`](metadata/README.md) | Versioned machine-readable operational metadata |
 | [`community/`](community/README.md) | Contribution, maintenance, and release practices |
 | [`wiki/`](wiki/Home.md) | Source-controlled adopter documentation |
 

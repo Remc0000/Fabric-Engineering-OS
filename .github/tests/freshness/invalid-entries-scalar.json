@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "entries": {
+    "path": "capabilities/notebook.md",
+    "contentType": "capability",
+    "status": "preview",
+    "owner": "Fabric Engineering OS maintainers",
+    "lastValidated": "2026-08-25",
+    "reviewBy": "2027-02-21",
+    "sources": [
+      "https://learn.microsoft.com/fabric/data-engineering/how-to-use-notebook"
+    ]
+  }
+}

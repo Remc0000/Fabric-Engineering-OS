@@ -29,6 +29,10 @@ jobs:
         shell: pwsh
         run: ./.github/scripts/test-bootstrap-helper.ps1
 
+      - name: Test guidance freshness validation
+        shell: pwsh
+        run: ./.github/scripts/test-freshness-validation.ps1
+
       - name: Detect whitespace errors
         shell: bash
         run: git diff --check HEAD^ HEAD
