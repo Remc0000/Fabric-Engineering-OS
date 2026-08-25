@@ -15,6 +15,13 @@ flowchart TD
     I --> J[Validate connector support and target tenant constraints]
 ```
 
+## Capability routes
+
+- Continuous event ingress routes to [Eventstream](../capabilities/eventstream.md).
+- Reference-in-place routes to [OneLake](../capabilities/onelake.md) and the [Shortcut Before Copy](../patterns/shortcut-before-copy.md) pattern; managed replication routes to [Mirroring](../capabilities/mirroring.md).
+- Orchestrated copy routes to [Pipeline](../capabilities/pipeline.md); low-code Power Query transformation routes to [Dataflows Gen2](../capabilities/dataflows-gen2.md).
+- Code-first transformation routes to [Notebook](../capabilities/notebook.md), with Spark runtime and Fabric Environment recorded as supporting execution decisions.
+
 ## Decision criteria
 
 - Prefer the least data movement that meets freshness, isolation, governance, and recovery needs.

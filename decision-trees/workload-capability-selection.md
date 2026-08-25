@@ -18,6 +18,13 @@ flowchart TD
     K --> L[Validate support, capacity, region, licensing, security, and operations]
 ```
 
+## Capability routes
+
+- For **Data Engineering**, evaluate [Lakehouse](../capabilities/lakehouse.md) and [Notebook](../capabilities/notebook.md); treat Spark runtime and Fabric Environment as supporting execution decisions.
+- For **Data Factory**, evaluate [Pipeline](../capabilities/pipeline.md) and [Dataflows Gen2](../capabilities/dataflows-gen2.md).
+- For **Real-Time Intelligence**, continue through the [real-time decision tree](real-time.md), including [Activator](../capabilities/activator.md) when governed action is required.
+- For environment-specific promotion values across workloads, evaluate [Variable Libraries](../capabilities/variable-libraries.md) after selecting the leading workload.
+
 ## Decision criteria
 
 - Choose the dominant workload by the primary engineering and operational responsibility, not by where a demo is easiest.

@@ -23,7 +23,7 @@ flowchart TD
 
 - Same identified artifact, source commit, and dependency set.
 - Required tests, security checks, data-quality evidence, and accepted residual risks.
-- Target configuration, identity, connection, capacity, and workspace validation.
+- Target configuration, identity, connection, capacity, and workspace validation; use [Variable Libraries](../capabilities/variable-libraries.md) only for supported non-secret environment-specific values.
 - Deployment order, compatibility, migration, rollback, monitoring, and support owner.
 - Human approval for PROD; agents may never approve, initiate, or execute PROD deployment.
 

@@ -87,6 +87,18 @@ $requiredContent = @{
         "Revision assigned",
         "/speckit-plan"
     )
+    "capabilities\README.md" = @(
+        "## Coverage boundaries",
+        "Fabric Environment",
+        "Shortcut Before Copy"
+    )
+    "decision-trees\ingestion.md" = @(
+        "dataflows-gen2\.md",
+        "shortcut-before-copy\.md"
+    )
+    "decision-trees\environment-promotion.md" = @(
+        "variable-libraries\.md"
+    )
 }
 
 foreach ($relativePath in $requiredContent.Keys) {
