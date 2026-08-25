@@ -65,7 +65,7 @@ try {
     $freshProject = Join-Path $testRoot "consumer\fresh-project"
     if (
         $apply.ExitCode -ne 0 -or
-        @((Get-ChildItem $freshProject -File)).Count -ne 4 -or
+        @((Get-ChildItem $freshProject -File -Force)).Count -ne 4 -or
         -not (Test-Path (Join-Path $freshProject ".fabric-bootstrap-manifest.json"))
     ) {
         $createdFiles = if (Test-Path $freshProject -PathType Container) {
