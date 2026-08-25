@@ -99,6 +99,12 @@ $requiredContent = @{
     "decision-trees\environment-promotion.md" = @(
         "variable-libraries\.md"
     )
+    "community\README.md" = @(
+        "SECURITY\.md"
+    )
+    ".github\ISSUE_TEMPLATE\production-incident.yml" = @(
+        "SECURITY\.md"
+    )
 }
 
 foreach ($relativePath in $requiredContent.Keys) {
