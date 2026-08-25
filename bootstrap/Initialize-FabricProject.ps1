@@ -456,7 +456,7 @@ Any specification content change invalidates prior approval. This decision does 
         }
         Assert-NoReparsePoint $projectPath
         Assert-NoReparsePoint $manifestPath
-        Remove-Item -LiteralPath $manifestPath
+        Remove-Item -LiteralPath $manifestPath -Force
         Write-Output "REMOVED $manifestPath"
         Assert-NoReparsePoint $projectPath
         if ((Test-Path $projectPath -PathType Container) -and @((Get-ChildItem -LiteralPath $projectPath -Force)).Count -eq 0) {

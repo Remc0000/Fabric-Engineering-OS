@@ -170,7 +170,7 @@ try {
 
     $ownedApply = Invoke-Helper -Slug "partial-owner" -Mode "Apply"
     $partialOwner = Join-Path $testRoot "consumer\partial-owner"
-    Remove-Item -LiteralPath (Join-Path $partialOwner ".fabric-bootstrap-manifest.json")
+    Remove-Item -LiteralPath (Join-Path $partialOwner ".fabric-bootstrap-manifest.json") -Force
     Remove-Item -LiteralPath (Join-Path $partialOwner "bootstrap-evidence.md")
     Remove-Item -LiteralPath (Join-Path $partialOwner "specification-approval.md")
     $ownedReapply = Invoke-Helper -Slug "partial-owner" -Mode "Apply"
