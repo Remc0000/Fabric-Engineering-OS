@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "entries": [
+    {
+      "path": "capabilities/notebook.md",
+      "contentType": "capability",
+      "status": "preview",
+      "owner": "",
+      "lastValidated": "not-a-date",
+      "reviewBy": "2026-01-01",
+      "sources": []
+    }
+  ]
+}
