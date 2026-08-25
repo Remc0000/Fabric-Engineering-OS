@@ -158,7 +158,14 @@ try {
         $rollback.ExitCode -ne 0 -or
         (Test-Path (Join-Path $testRoot "consumer\rollback-project"))
     ) {
-        throw "Rollback did not remove only the generated project."
+        $rollbackProject = Join-Path $testRoot "consumer\rollback-project"
+        $remainingFiles = if (Test-Path $rollbackProject -PathType Container) {
+            @((Get-ChildItem $rollbackProject -Force | ForEach-Object Name)) -join ", "
+        }
+        else {
+            "<project directory absent>"
+        }
+        throw "Rollback did not remove only the generated project. Apply exit: $($rollbackApply.ExitCode). Apply output: $($rollbackApply.Output). Rollback exit: $($rollback.ExitCode). Rollback output: $($rollback.Output). Remaining: $remainingFiles"
     }
 
     $ownedApply = Invoke-Helper -Slug "partial-owner" -Mode "Apply"
