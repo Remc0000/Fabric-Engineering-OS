@@ -6,7 +6,7 @@ labels:
 body:
   - type: markdown
     attributes:
-      value: "Do not include secrets, customer data, or sensitive identifiers. Follow [CONSTITUTION.md](/CONSTITUTION.md). Agents cannot deploy to PROD."
+      value: "Do not include secrets, customer data, or sensitive identifiers. Follow [SECURITY.md](/SECURITY.md) and [CONSTITUTION.md](/CONSTITUTION.md). Agents cannot deploy to PROD."
   - type: input
     id: owner
     attributes:
