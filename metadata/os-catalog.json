@@ -1,0 +1,478 @@
+{
+  "$schema": "./os-catalog.schema.json",
+  "schemaVersion": "1.0.0",
+  "entries": [
+    {
+      "id": "capability:activator",
+      "type": "capability",
+      "title": "Activator",
+      "status": "preview",
+      "path": "capabilities/activator.md",
+      "dependencies": [],
+      "related": ["capability:eventstream", "capability:real-time-intelligence"]
+    },
+    {
+      "id": "capability:data-agent",
+      "type": "capability",
+      "title": "Data Agent",
+      "status": "preview",
+      "path": "capabilities/data-agent.md",
+      "dependencies": ["capability:semantic-model"],
+      "related": ["pattern:grounded-data-agent", "golden-path:data-agent"]
+    },
+    {
+      "id": "capability:dataflows-gen2",
+      "type": "capability",
+      "title": "Dataflows Gen2",
+      "status": "preview",
+      "path": "capabilities/dataflows-gen2.md",
+      "dependencies": [],
+      "related": ["capability:pipeline", "capability:lakehouse", "capability:warehouse"]
+    },
+    {
+      "id": "capability:deployment-pipeline",
+      "type": "capability",
+      "title": "Deployment Pipeline",
+      "status": "preview",
+      "path": "capabilities/deployment-pipeline.md",
+      "dependencies": [],
+      "related": ["capability:git-integration", "capability:variable-libraries", "pattern:environment-promotion"]
+    },
+    {
+      "id": "capability:eventhouse",
+      "type": "capability",
+      "title": "Eventhouse",
+      "status": "preview",
+      "path": "capabilities/eventhouse.md",
+      "dependencies": [],
+      "related": ["capability:eventstream", "capability:real-time-intelligence", "golden-path:eventhouse-rti"]
+    },
+    {
+      "id": "capability:eventstream",
+      "type": "capability",
+      "title": "Eventstream",
+      "status": "preview",
+      "path": "capabilities/eventstream.md",
+      "dependencies": [],
+      "related": ["capability:eventhouse", "capability:activator", "pattern:real-time-event-processing"]
+    },
+    {
+      "id": "capability:fabric-sql-database",
+      "type": "capability",
+      "title": "Fabric SQL Database",
+      "status": "preview",
+      "path": "capabilities/fabric-sql-database.md",
+      "dependencies": [],
+      "related": ["capability:warehouse", "capability:mirroring"]
+    },
+    {
+      "id": "capability:git-integration",
+      "type": "capability",
+      "title": "Git Integration",
+      "status": "preview",
+      "path": "capabilities/git-integration.md",
+      "dependencies": [],
+      "related": ["capability:deployment-pipeline", "golden-path:release-management"]
+    },
+    {
+      "id": "capability:lakehouse",
+      "type": "capability",
+      "title": "Lakehouse",
+      "status": "preview",
+      "path": "capabilities/lakehouse.md",
+      "dependencies": ["capability:onelake"],
+      "related": ["capability:notebook", "capability:warehouse", "pattern:medallion-data-product"]
+    },
+    {
+      "id": "capability:mirroring",
+      "type": "capability",
+      "title": "Mirroring",
+      "status": "preview",
+      "path": "capabilities/mirroring.md",
+      "dependencies": ["capability:onelake"],
+      "related": ["golden-path:mirroring-to-gold", "reference-architecture:mirroring-to-gold"]
+    },
+    {
+      "id": "capability:notebook",
+      "type": "capability",
+      "title": "Notebook",
+      "status": "preview",
+      "path": "capabilities/notebook.md",
+      "dependencies": [],
+      "related": ["capability:lakehouse", "capability:pipeline"],
+      "freshnessRef": "capabilities/notebook.md"
+    },
+    {
+      "id": "capability:onelake",
+      "type": "capability",
+      "title": "OneLake",
+      "status": "preview",
+      "path": "capabilities/onelake.md",
+      "dependencies": [],
+      "related": ["capability:lakehouse", "capability:warehouse", "pattern:shortcut-before-copy"]
+    },
+    {
+      "id": "capability:pipeline",
+      "type": "capability",
+      "title": "Pipeline",
+      "status": "preview",
+      "path": "capabilities/pipeline.md",
+      "dependencies": [],
+      "related": ["capability:dataflows-gen2", "capability:notebook", "pattern:metadata-driven-orchestration"]
+    },
+    {
+      "id": "capability:real-time-intelligence",
+      "type": "capability",
+      "title": "Real-Time Intelligence",
+      "status": "preview",
+      "path": "capabilities/real-time-intelligence.md",
+      "dependencies": [],
+      "related": ["capability:eventstream", "capability:eventhouse", "capability:activator"]
+    },
+    {
+      "id": "capability:semantic-model",
+      "type": "capability",
+      "title": "Semantic Model",
+      "status": "preview",
+      "path": "capabilities/semantic-model.md",
+      "dependencies": [],
+      "related": ["pattern:governed-semantic-layer", "golden-path:semantic-model"]
+    },
+    {
+      "id": "capability:variable-libraries",
+      "type": "capability",
+      "title": "Variable Libraries",
+      "status": "preview",
+      "path": "capabilities/variable-libraries.md",
+      "dependencies": [],
+      "related": ["capability:deployment-pipeline", "pattern:environment-promotion"]
+    },
+    {
+      "id": "capability:warehouse",
+      "type": "capability",
+      "title": "Warehouse",
+      "status": "preview",
+      "path": "capabilities/warehouse.md",
+      "dependencies": ["capability:onelake"],
+      "related": ["capability:lakehouse", "capability:semantic-model"]
+    },
+    {
+      "id": "pattern:contract-first-data-product",
+      "type": "pattern",
+      "title": "Contract-First Data Product",
+      "status": "preview",
+      "path": "patterns/contract-first-data-product.md",
+      "dependencies": [],
+      "related": ["pattern:medallion-data-product", "golden-path:data-product"]
+    },
+    {
+      "id": "pattern:environment-promotion",
+      "type": "pattern",
+      "title": "Environment Promotion",
+      "status": "preview",
+      "path": "patterns/environment-promotion.md",
+      "dependencies": ["pattern:human-approval-gate"],
+      "related": ["capability:deployment-pipeline", "golden-path:release-management"]
+    },
+    {
+      "id": "pattern:governed-semantic-layer",
+      "type": "pattern",
+      "title": "Governed Semantic Layer",
+      "status": "preview",
+      "path": "patterns/governed-semantic-layer.md",
+      "dependencies": ["capability:semantic-model"],
+      "related": ["golden-path:semantic-model", "pattern:least-privilege-access"]
+    },
+    {
+      "id": "pattern:grounded-data-agent",
+      "type": "pattern",
+      "title": "Grounded Data Agent",
+      "status": "preview",
+      "path": "patterns/grounded-data-agent.md",
+      "dependencies": ["capability:data-agent", "pattern:least-privilege-access"],
+      "related": ["golden-path:data-agent", "reference-architecture:data-agent"]
+    },
+    {
+      "id": "pattern:human-approval-gate",
+      "type": "pattern",
+      "title": "Human Approval Gate",
+      "status": "preview",
+      "path": "patterns/human-approval-gate.md",
+      "dependencies": [],
+      "related": ["pattern:environment-promotion", "golden-path:release-management"]
+    },
+    {
+      "id": "pattern:idempotent-processing",
+      "type": "pattern",
+      "title": "Idempotent Processing",
+      "status": "preview",
+      "path": "patterns/idempotent-processing.md",
+      "dependencies": [],
+      "related": ["pattern:metadata-driven-orchestration", "pattern:observability-by-default"]
+    },
+    {
+      "id": "pattern:least-privilege-access",
+      "type": "pattern",
+      "title": "Least-Privilege Access",
+      "status": "preview",
+      "path": "patterns/least-privilege-access.md",
+      "dependencies": [],
+      "related": ["pattern:grounded-data-agent", "pattern:governed-semantic-layer"]
+    },
+    {
+      "id": "pattern:medallion-data-product",
+      "type": "pattern",
+      "title": "Medallion Data Product",
+      "status": "preview",
+      "path": "patterns/medallion-data-product.md",
+      "dependencies": ["capability:lakehouse"],
+      "related": ["pattern:contract-first-data-product", "golden-path:data-product"]
+    },
+    {
+      "id": "pattern:metadata-driven-orchestration",
+      "type": "pattern",
+      "title": "Metadata-Driven Orchestration",
+      "status": "preview",
+      "path": "patterns/metadata-driven-orchestration.md",
+      "dependencies": ["capability:pipeline"],
+      "related": ["pattern:idempotent-processing", "golden-path:metadata-driven-elt"]
+    },
+    {
+      "id": "pattern:observability-by-default",
+      "type": "pattern",
+      "title": "Observability by Default",
+      "status": "preview",
+      "path": "patterns/observability-by-default.md",
+      "dependencies": [],
+      "related": ["pattern:idempotent-processing", "golden-path:production-incident"]
+    },
+    {
+      "id": "pattern:real-time-event-processing",
+      "type": "pattern",
+      "title": "Real-Time Event Processing",
+      "status": "preview",
+      "path": "patterns/real-time-event-processing.md",
+      "dependencies": ["capability:eventstream", "capability:eventhouse"],
+      "related": ["golden-path:eventhouse-rti", "reference-architecture:eventhouse-rti"]
+    },
+    {
+      "id": "pattern:shortcut-before-copy",
+      "type": "pattern",
+      "title": "Shortcut Before Copy",
+      "status": "preview",
+      "path": "patterns/shortcut-before-copy.md",
+      "dependencies": ["capability:onelake"],
+      "related": ["capability:lakehouse", "golden-path:source-onboarding"],
+      "freshnessRef": "patterns/shortcut-before-copy.md"
+    },
+    {
+      "id": "golden-path:data-agent",
+      "type": "golden-path",
+      "title": "Data Agent",
+      "status": "preview",
+      "path": "golden-paths/data-agent.md",
+      "dependencies": ["capability:data-agent", "pattern:grounded-data-agent"],
+      "related": ["reference-architecture:data-agent", "agent-bundle:data-agent"]
+    },
+    {
+      "id": "golden-path:data-product",
+      "type": "golden-path",
+      "title": "Data Product",
+      "status": "preview",
+      "path": "golden-paths/data-product.md",
+      "dependencies": ["pattern:contract-first-data-product", "pattern:medallion-data-product"],
+      "related": ["reference-architecture:data-product", "agent-bundle:new-data-product"]
+    },
+    {
+      "id": "golden-path:eventhouse-rti",
+      "type": "golden-path",
+      "title": "Eventhouse Real-Time Intelligence",
+      "status": "preview",
+      "path": "golden-paths/eventhouse-rti.md",
+      "dependencies": ["capability:eventhouse", "pattern:real-time-event-processing"],
+      "related": ["reference-architecture:eventhouse-rti", "agent-bundle:eventhouse-rti"]
+    },
+    {
+      "id": "golden-path:metadata-driven-elt",
+      "type": "golden-path",
+      "title": "Metadata-Driven ELT",
+      "status": "preview",
+      "path": "golden-paths/metadata-driven-elt.md",
+      "dependencies": ["capability:pipeline", "pattern:metadata-driven-orchestration"],
+      "related": ["reference-architecture:metadata-driven-elt", "agent-bundle:metadata-driven-elt"],
+      "freshnessRef": "golden-paths/metadata-driven-elt.md"
+    },
+    {
+      "id": "golden-path:mirroring-to-gold",
+      "type": "golden-path",
+      "title": "Mirroring to Gold",
+      "status": "preview",
+      "path": "golden-paths/mirroring-to-gold.md",
+      "dependencies": ["capability:mirroring", "pattern:medallion-data-product"],
+      "related": ["reference-architecture:mirroring-to-gold", "agent-bundle:mirroring-to-gold"]
+    },
+    {
+      "id": "golden-path:production-incident",
+      "type": "golden-path",
+      "title": "Production Incident",
+      "status": "preview",
+      "path": "golden-paths/production-incident.md",
+      "dependencies": ["pattern:human-approval-gate", "pattern:observability-by-default"],
+      "related": ["agent-bundle:production-incident"]
+    },
+    {
+      "id": "golden-path:release-management",
+      "type": "golden-path",
+      "title": "Release Management",
+      "status": "preview",
+      "path": "golden-paths/release-management.md",
+      "dependencies": ["pattern:environment-promotion", "pattern:human-approval-gate"],
+      "related": ["capability:deployment-pipeline", "agent-bundle:release-management"]
+    },
+    {
+      "id": "golden-path:semantic-model",
+      "type": "golden-path",
+      "title": "Semantic Model",
+      "status": "preview",
+      "path": "golden-paths/semantic-model.md",
+      "dependencies": ["capability:semantic-model", "pattern:governed-semantic-layer"],
+      "related": ["agent-bundle:semantic-model"]
+    },
+    {
+      "id": "golden-path:source-onboarding",
+      "type": "golden-path",
+      "title": "Source Onboarding",
+      "status": "preview",
+      "path": "golden-paths/source-onboarding.md",
+      "dependencies": ["pattern:least-privilege-access", "pattern:observability-by-default"],
+      "related": ["pattern:shortcut-before-copy", "agent-bundle:source-onboarding"]
+    },
+    {
+      "id": "reference-architecture:data-agent",
+      "type": "reference-architecture",
+      "title": "Data Agent",
+      "status": "preview",
+      "path": "reference-architectures/data-agent.md",
+      "dependencies": ["capability:data-agent", "pattern:grounded-data-agent"],
+      "related": ["golden-path:data-agent", "agent-bundle:data-agent"]
+    },
+    {
+      "id": "reference-architecture:data-product",
+      "type": "reference-architecture",
+      "title": "Data Product",
+      "status": "preview",
+      "path": "reference-architectures/data-product.md",
+      "dependencies": ["pattern:medallion-data-product", "pattern:contract-first-data-product"],
+      "related": ["golden-path:data-product", "agent-bundle:new-data-product"],
+      "freshnessRef": "reference-architectures/data-product.md"
+    },
+    {
+      "id": "reference-architecture:eventhouse-rti",
+      "type": "reference-architecture",
+      "title": "Eventhouse Real-Time Intelligence",
+      "status": "preview",
+      "path": "reference-architectures/eventhouse-rti.md",
+      "dependencies": ["capability:eventhouse", "pattern:real-time-event-processing"],
+      "related": ["golden-path:eventhouse-rti", "agent-bundle:eventhouse-rti"]
+    },
+    {
+      "id": "reference-architecture:metadata-driven-elt",
+      "type": "reference-architecture",
+      "title": "Metadata-Driven ELT",
+      "status": "preview",
+      "path": "reference-architectures/metadata-driven-elt.md",
+      "dependencies": ["capability:pipeline", "pattern:metadata-driven-orchestration"],
+      "related": ["golden-path:metadata-driven-elt", "agent-bundle:metadata-driven-elt"]
+    },
+    {
+      "id": "reference-architecture:mirroring-to-gold",
+      "type": "reference-architecture",
+      "title": "Mirroring to Gold",
+      "status": "preview",
+      "path": "reference-architectures/mirroring-to-gold.md",
+      "dependencies": ["capability:mirroring", "pattern:medallion-data-product"],
+      "related": ["golden-path:mirroring-to-gold", "agent-bundle:mirroring-to-gold"]
+    },
+    {
+      "id": "agent-bundle:data-agent",
+      "type": "agent-bundle",
+      "title": "Data Agent",
+      "status": "preview",
+      "path": "agent-bundles/data-agent/charter.md",
+      "dependencies": ["golden-path:data-agent", "reference-architecture:data-agent"],
+      "related": []
+    },
+    {
+      "id": "agent-bundle:eventhouse-rti",
+      "type": "agent-bundle",
+      "title": "Eventhouse Real-Time Intelligence",
+      "status": "preview",
+      "path": "agent-bundles/eventhouse-rti/charter.md",
+      "dependencies": ["golden-path:eventhouse-rti", "reference-architecture:eventhouse-rti"],
+      "related": []
+    },
+    {
+      "id": "agent-bundle:metadata-driven-elt",
+      "type": "agent-bundle",
+      "title": "Metadata-Driven ELT",
+      "status": "preview",
+      "path": "agent-bundles/metadata-driven-elt/charter.md",
+      "dependencies": ["golden-path:metadata-driven-elt", "reference-architecture:metadata-driven-elt"],
+      "related": []
+    },
+    {
+      "id": "agent-bundle:mirroring-to-gold",
+      "type": "agent-bundle",
+      "title": "Mirroring to Gold",
+      "status": "preview",
+      "path": "agent-bundles/mirroring-to-gold/charter.md",
+      "dependencies": ["golden-path:mirroring-to-gold", "reference-architecture:mirroring-to-gold"],
+      "related": []
+    },
+    {
+      "id": "agent-bundle:new-data-product",
+      "type": "agent-bundle",
+      "title": "New Data Product",
+      "status": "preview",
+      "path": "agent-bundles/new-data-product/charter.md",
+      "dependencies": ["golden-path:data-product", "reference-architecture:data-product"],
+      "related": []
+    },
+    {
+      "id": "agent-bundle:production-incident",
+      "type": "agent-bundle",
+      "title": "Production Incident",
+      "status": "preview",
+      "path": "agent-bundles/production-incident/charter.md",
+      "dependencies": ["golden-path:production-incident"],
+      "related": ["pattern:human-approval-gate"]
+    },
+    {
+      "id": "agent-bundle:release-management",
+      "type": "agent-bundle",
+      "title": "Release Management",
+      "status": "preview",
+      "path": "agent-bundles/release-management/charter.md",
+      "dependencies": ["golden-path:release-management"],
+      "related": ["pattern:environment-promotion"]
+    },
+    {
+      "id": "agent-bundle:semantic-model",
+      "type": "agent-bundle",
+      "title": "Semantic Model",
+      "status": "preview",
+      "path": "agent-bundles/semantic-model/charter.md",
+      "dependencies": ["golden-path:semantic-model"],
+      "related": ["pattern:governed-semantic-layer"]
+    },
+    {
+      "id": "agent-bundle:source-onboarding",
+      "type": "agent-bundle",
+      "title": "Source Onboarding",
+      "status": "preview",
+      "path": "agent-bundles/source-onboarding/charter.md",
+      "dependencies": ["golden-path:source-onboarding"],
+      "related": ["pattern:shortcut-before-copy"]
+    }
+  ]
+}

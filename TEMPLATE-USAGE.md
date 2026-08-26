@@ -28,6 +28,7 @@ The content validator keeps canonical OS guidance governed without forcing the s
 - It checks local Markdown links in all directories, including exempt consumer content. Relative targets must exist in the checked-out repository; web, email, and same-page anchor links are not resolved locally.
 - It validates the required OS directory/file structure and selected governance invariants.
 - It validates the inherited guidance-freshness manifest. Review-due entries emit warnings; malformed entries fail.
+- It validates the machine-readable OS catalog, canonical targets, stable IDs, relationships, and freshness references.
 - It does not validate external URL availability or Markdown syntax beyond the local-link patterns it recognizes.
 
 The default exempt directories are `consumer/` and `examples/`. Override the complete list in a consumer repository without editing the script:
@@ -39,6 +40,8 @@ The default exempt directories are `consumer/` and `examples/`. Override the com
 Keep canonical OS directories out of the exemption list. Run the command locally after changing documentation; the same default invocation runs in the quality gate.
 
 Freshness metadata is additive and never replaces current Microsoft Learn review. If consumers materially change covered guidance, they must update its metadata after a new review. Consumers that omit freshness metadata must pass `-SkipFreshnessValidation` to the content validator in their quality workflow; this disables both the required-artifact checks and the validator invocation without leaving a success-shaped placeholder.
+
+The machine-readable catalog is also additive. Consumers may query it, ignore it, or enrich entries under their own reverse-domain `extensions` namespace. Consumers that remove the catalog must pass `-SkipCatalogValidation`; consumers that keep it must preserve OS-owned IDs and update canonical paths and relationships with their inherited guidance.
 
 ## Required configuration after templating
 

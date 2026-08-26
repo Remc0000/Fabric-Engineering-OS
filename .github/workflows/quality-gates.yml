@@ -33,6 +33,10 @@ jobs:
         shell: pwsh
         run: ./.github/scripts/test-freshness-validation.ps1
 
+      - name: Test machine-readable OS catalog
+        shell: pwsh
+        run: ./.github/scripts/test-os-catalog-validation.ps1
+
       - name: Detect whitespace errors
         shell: bash
         run: git diff --check HEAD^ HEAD
