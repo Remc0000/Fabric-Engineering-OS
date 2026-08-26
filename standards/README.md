@@ -16,6 +16,7 @@ Microsoft Fabric is the only supported data platform. GitHub Copilot is the agen
 | [Testing](testing.md) | Risk-based validation and evidence |
 | [Source grounding](source-grounding.md) | Product claims and reference authority |
 | [Guidance freshness](guidance-freshness.md) | Product-guidance validation dates, ownership, and review-due signals |
+| [Machine-readable catalog](machine-readable-catalog.md) | Stable discovery IDs, canonical entry points, relationships, and consumer extensions |
 | [Spec Kit delivery](spec-kit.md) | Native Copilot specifications, human approval before planning, and reviewed updates |
 | [GitHub delivery](github-delivery.md) | Issues, branches, commits, pull requests, and reviews |
 | [Environment promotion](environment-promotion.md) | DEV, TEST, and PROD progression |
