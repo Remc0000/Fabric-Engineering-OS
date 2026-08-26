@@ -2,6 +2,8 @@
 
 A GitHub-first operating system for governed AI-assisted engineering on Microsoft Fabric.
 
+![Fabric Engineering OS overview](assets/branding/fabric-engineering-os-overview.png)
+
 > All use and contribution is governed by the [Fabric Engineering OS Constitution](CONSTITUTION.md).
 
 ## What this repository is
