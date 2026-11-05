@@ -100,6 +100,36 @@ $requiredContent = @{
         "Approved for planning",
         "Revision assigned"
     )
+    ".github\agents\architect.agent.md" = @(
+        "../../agents/architect.md",
+        "Microsoft Learn",
+        "Approved for build",
+        "Approved for planning",
+        "immutable commit SHA"
+    )
+    ".github\agents\maker.agent.md" = @(
+        "../../agents/maker.md",
+        "Approved for build",
+        "stale",
+        "Never merge"
+    )
+    ".github\agents\inspecteur.agent.md" = @(
+        "../../agents/inspecteur.md",
+        "expected and actual results",
+        "before/after comparison",
+        "humans decide acceptance"
+    )
+    ".github\agents\criticus.agent.md" = @(
+        "../../agents/criticus.md",
+        "failure scenario",
+        "do not approve work"
+    )
+    ".github\agents\chronicler.agent.md" = @(
+        "../../agents/chronicler.md",
+        "commit SHA",
+        "proposal issue",
+        "Do not assume production deployment"
+    )
     "bootstrap\new-project.md" = @(
         "specify init --here --force --non-interactive --integration copilot",
         "integration-options",
