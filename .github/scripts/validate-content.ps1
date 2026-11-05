@@ -186,9 +186,30 @@ $requiredContent = @{
         "rejects approval of an older proposal revision",
         "rejects the issue until a maintainer authorizes agent triage"
     )
+    ".github\workflows\data-defect-gate-two.yml" = @(
+        "pull_request:",
+        "pull-requests: read",
+        "gate-two-evidence.js",
+        "headSha: pr.head.sha",
+        "github.event.pull_request.head.repo.full_name",
+        "github.event.pull_request.head.sha",
+        "persist-credentials: false"
+    )
+    ".github\scripts\gate-two-evidence.js" = @(
+        "Feature workspace and Fabric Git branch",
+        "Inspecteur verification and limitations",
+        "Criticus findings and disposition",
+        "Exact PR commit SHA"
+    )
+    ".github\scripts\gate-two-evidence.test.js" = @(
+        "accepts complete evidence",
+        "rejects an uncompleted evidence placeholder",
+        "rejects evidence bound to an earlier PR commit"
+    )
     ".github\PULL_REQUEST_TEMPLATE.md" = @(
         "Data-defect evidence",
         "Before/after comparison",
+        "Evidence sanitization and data authorization",
         "Exact PR commit SHA"
     )
     "golden-paths\data-defect.md" = @(
@@ -197,7 +218,8 @@ $requiredContent = @{
         "immutable commit SHA",
         "Gate 2",
         "feature workspace",
-        "fail closed"
+        "fail closed",
+        "evidence-completeness/SHA validation"
     )
     "bootstrap\new-project.md" = @(
         "specify init --here --force --non-interactive --integration copilot",
