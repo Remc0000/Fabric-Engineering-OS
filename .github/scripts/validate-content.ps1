@@ -159,9 +159,13 @@ $requiredContent = @{
     ".github\workflows\maintainer-triage.yml" = @(
         "issues:",
         "agent-triage",
-        "getCollaboratorPermissionLevel",
-        'permission === "admin"',
+        "maintainers.json",
+        "maintainers.some",
         "removeLabel"
+    )
+    ".github\maintainers.json" = @(
+        '"maintainers"',
+        '"Remc0000"'
     )
     ".github\workflows\data-defect-gate.yml" = @(
         "pull_request:",

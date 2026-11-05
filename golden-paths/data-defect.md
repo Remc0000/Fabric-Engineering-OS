@@ -16,7 +16,7 @@ Resolve a reported data defect through an immutable fix proposal, two human deci
 ## Required roles
 
 - **Reporter:** describes the observation and its context; does not need to prescribe a fix.
-- **Maintainer:** reviews the issue as untrusted input and applies the `agent-triage` label only after confirming that the report is in scope. A workflow removes this label when applied by a user without `admin` or `maintain` repository permission.
+- **Maintainer:** reviews the issue as untrusted input and applies the `agent-triage` label only after confirming that the report is in scope. A workflow removes this label unless the actor is in the reviewed `.github/maintainers.json` allowlist. Keep that list synchronized with actual GitHub maintainers.
 - **Ontdekker and Verkenner:** reproduce using authorized read-only evidence and compare feasible causes/options.
 - **Architect:** prepares the bounded fix proposal and identifies blast radius, regression test, and rollback.
 - **Named data/service owner:** decides Gate 1.
