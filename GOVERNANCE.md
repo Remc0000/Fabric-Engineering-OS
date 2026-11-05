@@ -49,7 +49,7 @@ Changes to constitutional boundaries, source precedence, agent permissions, or a
 
 Some controls are enforced only by GitHub configuration, not by files in this repository. They must be set manually and re-verified after any template instantiation:
 
-- **Branch protection on the default branch:** require a pull request, the required status check, and — for the canonical OS — at least one human approval and CODEOWNERS review. Any deliberate deviation must be recorded as an accepted risk.
+- **Branch protection on the default branch:** require a pull request, all required status checks, at least one human approval, CODEOWNERS review, dismissal of stale approvals after new commits, and approval of the most recent push. Keep auto-merge and agent merge disabled. Any deliberate deviation must be recorded as an accepted risk.
 - **Environment protection for DEV and TEST:** configure the human authorization appropriate to each environment's risk. Workflow YAML alone does not enforce this.
 - **Environment protection for PROD:** required reviewers and a protected-branch policy; production remains human-approved and human-executed.
 

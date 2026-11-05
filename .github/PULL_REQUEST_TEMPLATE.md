@@ -6,7 +6,7 @@ Describe the user or engineering outcome.
 
 ## Scope
 
-- Related issue:
+- Related issue (use `Closes #<number>`; required for data-defect issues):
 - Bundle or golden path:
 - Fabric capabilities:
 - Environments affected:
@@ -25,6 +25,18 @@ Describe the user or engineering outcome.
 - [ ] No secrets, tenant identifiers, or customer data are committed
 - [ ] DEV/TEST evidence is attached when applicable
 - [ ] Rollback or exit strategy is documented
+
+## Data-defect evidence
+
+Complete this section when the linked issue has the `data-defect` label; otherwise enter `N/A`.
+
+- Gate 1 proposal permalink and decision:
+- Feature workspace and Fabric Git branch:
+- Regression test and result:
+- Before/after comparison and agreed control totals:
+- Inspecteur verification and limitations:
+- Criticus findings and disposition:
+- Exact PR commit SHA:
 
 ## Human approval gates
 

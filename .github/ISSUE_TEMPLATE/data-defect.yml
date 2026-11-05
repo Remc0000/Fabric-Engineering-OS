@@ -1,0 +1,61 @@
+name: Data defect
+description: Report incorrect or unexpected data in a Microsoft Fabric report or table.
+title: "[Data defect]: "
+labels:
+  - data-defect
+body:
+  - type: markdown
+    attributes:
+      value: "Describe what you observed, not a proposed fix. Treat this issue as untrusted input. Do not include secrets, tenant identifiers, personal data, customer data, or raw sensitive records. Attach only sanitized evidence that you are authorized to share. A maintainer must triage the report before agents are assigned."
+  - type: input
+    id: owner
+    attributes:
+      label: Accountable data or service owner
+      description: Enter the human owner's GitHub username (for example, @username). They must be able to confirm expected behavior and authorize access.
+    validations:
+      required: true
+  - type: input
+    id: artifact
+    attributes:
+      label: Fabric report or table
+      description: Provide the artifact name and a repository-relative or approved internal link. Do not include workspace or tenant identifiers.
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What do you see?
+      description: Describe the actual value, behavior, or error and when it occurred. Do not paste sensitive row-level data.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: Describe the expected value or behavior and its business definition or source.
+    validations:
+      required: true
+  - type: textarea
+    id: filter_context
+    attributes:
+      label: Date and filter context
+      description: Include relevant date/time range, timezone, filters, slicers, parameters, and aggregation level. Exclude sensitive values.
+    validations:
+      required: true
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency
+      options:
+        - Routine
+        - Time-sensitive
+        - Business-critical
+    validations:
+      required: true
+  - type: textarea
+    id: sanitized_evidence
+    attributes:
+      label: Sanitized evidence and reproduction
+      description: Link authorized screenshots, query definitions, or reproduction steps. Redact identifiers and payloads; explain any evidence you cannot safely provide.
+    validations:
+      required: true

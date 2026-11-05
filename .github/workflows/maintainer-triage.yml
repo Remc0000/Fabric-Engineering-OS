@@ -1,0 +1,40 @@
+name: Enforce maintainer-only agent triage
+
+on:
+  issues:
+    types:
+      - labeled
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verify-maintainer:
+    if: github.event.label.name == 'agent-triage'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out maintainer allowlist
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Require maintain permission for agent triage
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const maintainers = require("./.github/maintainers.json").maintainers;
+            const actor = context.payload.sender.login;
+            if (maintainers.some((login) => login.toLowerCase() === actor.toLowerCase())) {
+              core.info("Agent triage label applied by an authorized maintainer.");
+              return;
+            }
+
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              name: "agent-triage"
+            });
+            core.setFailed(`Removed agent-triage label: ${actor} is not listed as a repository maintainer.`);

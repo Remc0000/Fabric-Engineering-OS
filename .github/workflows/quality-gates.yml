@@ -37,6 +37,10 @@ jobs:
         shell: pwsh
         run: ./.github/scripts/test-os-catalog-validation.ps1
 
+      - name: Test data-defect Gate 1 validation
+        shell: bash
+        run: node --test .github/scripts/data-defect-gate.test.js
+
       - name: Detect whitespace errors
         shell: bash
         run: git diff --check HEAD^ HEAD

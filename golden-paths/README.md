@@ -13,5 +13,6 @@ These delivery paths are governed by the root [Fabric Engineering OS Constitutio
 | [Metadata-driven ELT](metadata-driven-elt.md) | Reusable multi-source ELT with auditable state |
 | [Production incident](production-incident.md) | Controlled restoration with preserved evidence |
 | [Release management](release-management.md) | Reproducible promotion with human production control |
+| [Data defect](data-defect.md) | Resolve a reported Fabric data defect through immutable proposals, human gates, and evidence |
 
 Across every path, agents may implement and use approved workflows to deploy DEV and TEST. Humans approve architecture, pull requests, merges, and PROD actions. Approval cannot be inferred from successful automation.
