@@ -6,7 +6,7 @@ Describe the user or engineering outcome.
 
 ## Scope
 
-- Related issue:
+- Related issue (use `Closes #<number>`; required for data-defect issues):
 - Bundle or golden path:
 - Fabric capabilities:
 - Environments affected:

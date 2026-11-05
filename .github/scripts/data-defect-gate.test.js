@@ -1,6 +1,12 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
-const { verifyGateOne } = require("./data-defect-gate");
+const {
+  findLinkedIssueNumbers,
+  isDataDefect,
+  setGateStatus,
+  statusContext,
+  verifyGateOne
+} = require("./data-defect-gate");
 
 const sha = "0123456789abcdef0123456789abcdef01234567";
 const proposal = `https://github.com/Remc0000/Fabric-Engineering-OS/blob/${sha}/proposals/fix.md`;
@@ -146,4 +152,57 @@ test("rejects a proposal permalink outside the current repository", async () => 
     }),
     /this repository/
   );
+});
+
+test("extracts closing references without treating unrelated numbers as issue links", () => {
+  assert.deepEqual(findLinkedIssueNumbers("Fixes #12 and closes #34; fixes #12; see PR #56"), [12, 34]);
+});
+
+test("classifies only issues carrying the data-defect label", () => {
+  assert.equal(isDataDefect(issue), true);
+  assert.equal(isDataDefect({ labels: [{ name: "bug" }] }), false);
+  assert.equal(isDataDefect({
+    body: "### Fabric report or table\n\nSales",
+    labels: [{ name: "bug" }]
+  }), true);
+});
+
+test("rejects a data-defect issue whose classification label was removed", async () => {
+  await assert.rejects(
+    verifyGateOne({
+      issue: { ...issue, labels: [{ name: "agent-triage" }] },
+      comments: comments(),
+      github,
+      owner: "Remc0000",
+      repo: "Fabric-Engineering-OS"
+    }),
+    /retain its `data-defect` classification/
+  );
+});
+
+test("publishes the freshness decision against the requested commit", async () => {
+  let request;
+  const statusClient = {
+    rest: {
+      repos: {
+        createCommitStatus: async (value) => { request = value; }
+      }
+    }
+  };
+  await setGateStatus({
+    github: statusClient,
+    owner: "Remc0000",
+    repo: "Fabric-Engineering-OS",
+    sha,
+    state: "failure",
+    description: "Gate 1 approval is stale."
+  });
+  assert.deepEqual(request, {
+    owner: "Remc0000",
+    repo: "Fabric-Engineering-OS",
+    sha,
+    state: "failure",
+    context: statusContext,
+    description: "Gate 1 approval is stale."
+  });
 });

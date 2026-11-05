@@ -1,78 +1,159 @@
 name: Data-defect Gate 1
 
 on:
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - edited
       - reopened
       - synchronize
       - labeled
+  issue_comment:
+    types:
+      - created
+      - edited
+  issues:
+    types:
+      - edited
+      - labeled
+      - unlabeled
 
 permissions:
   contents: read
   issues: read
   pull-requests: read
+  statuses: write
 
 jobs:
   verify-gate-one:
+    if: github.event_name == 'pull_request_target' || (github.event.issue.pull_request == null && (github.event_name == 'issue_comment' || github.event_name == 'issues'))
     name: Verify current proposal approval
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository scripts
+      - name: Check out trusted repository scripts
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.event.repository.default_branch }}
           persist-credentials: false
 
-      - name: Check linked data-defect approval
+      - name: Verify and publish the current gate status
         uses: actions/github-script@v7
         with:
           script: |
-            const { verifyGateOne } = require("./.github/scripts/data-defect-gate.js");
-            const pr = context.payload.pull_request;
-            const body = pr.body || "";
-            const linkedIssues = [...body.matchAll(/(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#(\d+)/gi)]
-              .map((match) => Number(match[1]));
-            const isDataDefectPR = pr.labels.some((label) => label.name === "data-defect") ||
-              /^\[data defect\]/i.test(pr.title);
+            const {
+              findLinkedIssueNumbers,
+              isDataDefect,
+              setGateStatus,
+              verifyGateOne
+            } = require("./.github/scripts/data-defect-gate.js");
 
-            if (linkedIssues.length === 0) {
-              if (isDataDefectPR) {
-                core.setFailed("A data-defect pull request must use a closing reference such as `Closes #123`.");
-              } else {
-                core.info("No linked data-defect issue; Gate 1 check is not applicable.");
+            async function getLinkedIssues(body) {
+              const issueNumbers = findLinkedIssueNumbers(body);
+              return Promise.all(issueNumbers.map(async (issue_number) => {
+                const { data } = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number
+                });
+                return data;
+              }));
+            }
+
+            async function checkIssues(issues, sha) {
+              const defectIssues = issues.filter(isDataDefect);
+              for (const issue of defectIssues) {
+                const comments = await github.paginate(github.rest.issues.listComments, {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  per_page: 100
+                });
+                await verifyGateOne({
+                  issue,
+                  comments,
+                  github,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo
+                });
+              }
+
+              const description = defectIssues.length === 0
+                ? "No linked data-defect issue; Gate 1 not applicable."
+                : "Current data-defect proposal has owner approval.";
+              await setGateStatus({
+                github,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: "success",
+                description
+              });
+            }
+
+            async function failStatus(sha, error) {
+              await setGateStatus({
+                github,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: "failure",
+                description: error.message.slice(0, 140)
+              });
+              core.setFailed(error.message);
+            }
+
+            if (context.eventName === "pull_request_target") {
+              const pr = context.payload.pull_request;
+              const linkedIssues = await getLinkedIssues(pr.body || "");
+              const defectIssues = linkedIssues.filter(isDataDefect);
+              const isDataDefectPR = pr.labels.some((label) => label.name === "data-defect") ||
+                /^\[data defect\]/i.test(pr.title);
+
+              if (isDataDefectPR && linkedIssues.length === 0) {
+                await failStatus(pr.head.sha, new Error(
+                  "A data-defect pull request must use a closing reference such as `Closes #123`."
+                ));
+                return;
+              }
+              if (isDataDefectPR && defectIssues.length === 0) {
+                await failStatus(pr.head.sha, new Error(
+                  "A data-defect pull request must link an issue with the `data-defect` label."
+                ));
+                return;
+              }
+
+              try {
+                await checkIssues(linkedIssues, pr.head.sha);
+                core.info("Gate 1 freshness status updated for the pull-request commit.");
+              } catch (error) {
+                await failStatus(pr.head.sha, error);
               }
               return;
             }
 
-            const issues = await Promise.all(linkedIssues.map(async (issue_number) => {
-              const { data } = await github.rest.issues.get({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                issue_number
-              });
-              return data;
-            }));
-            const defect = issues.find((issue) =>
-              issue.labels.some((label) => label.name === "data-defect")
-            );
-
-            if (!defect) {
-              core.info("No linked data-defect issue; Gate 1 check is not applicable.");
+            const issue = context.payload.issue;
+            if (!isDataDefect(issue)) {
+              core.info("Issue is not a data-defect; no Gate 1 status refresh is needed.");
               return;
             }
 
-            const comments = await github.paginate(github.rest.issues.listComments, {
+            const openPullRequests = await github.paginate(github.rest.pulls.list, {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: defect.number,
+              state: "open",
               per_page: 100
             });
-            const approval = await verifyGateOne({
-              issue: defect,
-              comments,
-              github,
-              owner: context.repo.owner,
-              repo: context.repo.repo
-            });
-            core.info(`Gate 1 approval by @${approval.owner} is bound to proposal revision ${approval.sha}.`);
+            const linkedPullRequests = openPullRequests.filter((pr) =>
+              findLinkedIssueNumbers(pr.body || "").includes(issue.number)
+            );
+
+            for (const pr of linkedPullRequests) {
+              const linkedIssues = await getLinkedIssues(pr.body || "");
+              try {
+                await checkIssues(linkedIssues, pr.head.sha);
+              } catch (error) {
+                await failStatus(pr.head.sha, error);
+              }
+            }
+
+            core.info(`Refreshed Gate 1 status for ${linkedPullRequests.length} open pull request(s).`);

@@ -1,5 +1,18 @@
 const proposalPattern = /^Proposal revision:\s*(https:\/\/github\.com\/[^/\s]+\/[^/\s]+\/blob\/[a-f0-9]{40}\/[^\s]+)\s*$/gim;
 const decisionPattern = /^Gate 1 decision:\s*(Approved for build|Revision assigned)\s*$/gim;
+const statusContext = "Data-defect Gate 1 freshness";
+
+function findLinkedIssueNumbers(body) {
+  return [...new Set(
+    [...body.matchAll(/(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\s+#(\d+)/gi)]
+      .map((match) => Number(match[1]))
+  )];
+}
+
+function isDataDefect(issue) {
+  return issue.labels.some((label) => label.name === "data-defect" || label.name === "agent-triage") ||
+    /### Fabric report or table/i.test(issue.body || "");
+}
 
 function extractProposalLinks(body) {
   return [...body.matchAll(proposalPattern)].map((match) => match[1].replace(/[),.]+$/, ""));
@@ -22,6 +35,8 @@ function require(condition, message) {
 
 async function verifyGateOne({ issue, comments, github, owner, repo }) {
   const labels = issue.labels.map((label) => label.name);
+  require(labels.includes("data-defect"),
+    "The linked data-defect issue must retain its `data-defect` classification label.");
   require(labels.includes("agent-triage"),
     "A maintainer must apply the `agent-triage` label before implementation proceeds.");
 
@@ -67,4 +82,21 @@ async function verifyGateOne({ issue, comments, github, owner, repo }) {
   return { owner: accountableOwner, sha, path };
 }
 
-module.exports = { verifyGateOne };
+async function setGateStatus({ github, owner, repo, sha, state, description }) {
+  await github.rest.repos.createCommitStatus({
+    owner,
+    repo,
+    sha,
+    state,
+    context: statusContext,
+    description
+  });
+}
+
+module.exports = {
+  findLinkedIssueNumbers,
+  isDataDefect,
+  setGateStatus,
+  statusContext,
+  verifyGateOne
+};
