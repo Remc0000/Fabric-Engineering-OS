@@ -275,6 +275,15 @@
       "related": ["reference-architecture:data-agent", "agent-bundle:data-agent"]
     },
     {
+      "id": "golden-path:data-defect",
+      "type": "golden-path",
+      "title": "Data Defect",
+      "status": "preview",
+      "path": "golden-paths/data-defect.md",
+      "dependencies": ["capability:git-integration", "pattern:human-approval-gate"],
+      "related": ["golden-path:release-management"]
+    },
+    {
       "id": "golden-path:data-product",
       "type": "golden-path",
       "title": "Data Product",

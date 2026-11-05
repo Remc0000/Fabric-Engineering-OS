@@ -12,7 +12,7 @@ Agents operate through GitHub Copilot and use GitHub MCP for repository interact
 2. **Branch:** create a short-lived branch from the approved base using the naming standard.
 3. **Commit:** make focused commits that explain intent and avoid generated noise, secrets, and unrelated changes.
 4. **Pull request:** link the issue and describe problem, approach, validation, operational impact, assumptions, and rollback.
-5. **Review:** require passing checks and at least one human approval; use additional owners for architecture, security, or data risk.
+5. **Review:** require passing checks and at least one human approval; dismiss stale approvals after new commits and require approval of the most recent push. Require CODEOWNERS review for governed paths and use additional owners for architecture, security, or data risk.
 6. **Merge:** only an authorized human or human-approved protected workflow may merge.
 
 ## Agent permissions

@@ -93,6 +93,22 @@ $requiredContent = @{
         "/speckit-plan",
         "exact Spec Kit specification revision"
     )
+    "GOVERNANCE.md" = @(
+        "at least one human approval",
+        "CODEOWNERS review",
+        "dismissal of stale approvals",
+        "approval of the most recent push",
+        "agent merge disabled"
+    )
+    "TEMPLATE-USAGE.md" = @(
+        "dismissal of stale approvals",
+        "approval of the most recent push",
+        "agent merge disabled"
+    )
+    "standards\github-delivery.md" = @(
+        "dismiss stale approvals",
+        "approval of the most recent push"
+    )
     ".github\agents\ontdekker.agent.md" = @(
         "/speckit-specify",
         "/speckit-clarify",
@@ -129,6 +145,53 @@ $requiredContent = @{
         "commit SHA",
         "proposal issue",
         "Do not assume production deployment"
+    )
+    ".github\ISSUE_TEMPLATE\data-defect.yml" = @(
+        "Accountable data or service owner",
+        "Fabric report or table",
+        "What do you see\?",
+        "What did you expect\?",
+        "Date and filter context",
+        "Urgency",
+        "sanitized evidence",
+        "untrusted input"
+    )
+    ".github\workflows\maintainer-triage.yml" = @(
+        "issues:",
+        "agent-triage",
+        "getCollaboratorPermissionLevel",
+        'permission === "admin"',
+        "removeLabel"
+    )
+    ".github\workflows\data-defect-gate.yml" = @(
+        "pull_request:",
+        "data-defect",
+        "verifyGateOne",
+        "data-defect-gate.js"
+    )
+    ".github\scripts\data-defect-gate.js" = @(
+        "Approved for build",
+        "Revision assigned",
+        "latestProposal",
+        "repos.getContent"
+    )
+    ".github\scripts\data-defect-gate.test.js" = @(
+        "accepts an owner approval",
+        "rejects approval of an older proposal revision",
+        "rejects the issue until a maintainer authorizes agent triage"
+    )
+    ".github\PULL_REQUEST_TEMPLATE.md" = @(
+        "Data-defect evidence",
+        "Before/after comparison",
+        "Exact PR commit SHA"
+    )
+    "golden-paths\data-defect.md" = @(
+        "Approved for build",
+        "Revision assigned",
+        "immutable commit SHA",
+        "Gate 2",
+        "feature workspace",
+        "fail closed"
     )
     "bootstrap\new-project.md" = @(
         "specify init --here --force --non-interactive --integration copilot",
