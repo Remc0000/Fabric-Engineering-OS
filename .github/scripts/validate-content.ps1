@@ -164,7 +164,7 @@ $requiredContent = @{
         "removeLabel"
     )
     ".github\workflows\data-defect-gate.yml" = @(
-        "pull_request_target:",
+        "pull_request:",
         "issue_comment:",
         "data-defect",
         "verifyGateOne",
