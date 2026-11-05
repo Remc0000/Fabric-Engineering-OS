@@ -18,25 +18,97 @@ on:
       - labeled
       - unlabeled
 
-permissions:
-  contents: read
-  issues: read
-  pull-requests: read
-  statuses: write
-
 jobs:
-  verify-gate-one:
-    if: github.event_name == 'pull_request' || (github.event.issue.pull_request == null && (github.event_name == 'issue_comment' || github.event_name == 'issues'))
+  verify-pull-request:
+    if: github.event_name == 'pull_request'
     name: Verify current proposal approval
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
     steps:
-      - name: Check out trusted repository scripts
+      - name: Check out pull-request code with read-only permissions
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.ref || github.event.repository.default_branch }}
+          ref: ${{ github.event.pull_request.head.ref }}
           persist-credentials: false
 
-      - name: Verify and publish the current gate status
+      - name: Verify the current Gate 1 approval
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {
+              findLinkedIssueNumbers,
+              isDataDefect,
+              verifyGateOne
+            } = require("./.github/scripts/data-defect-gate.js");
+
+            async function getLinkedIssues(body) {
+              const issueNumbers = findLinkedIssueNumbers(body);
+              return Promise.all(issueNumbers.map(async (issue_number) => {
+                const { data } = await github.rest.issues.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number
+                });
+                return data;
+              }));
+            }
+
+            const pr = context.payload.pull_request;
+            const linkedIssues = await getLinkedIssues(pr.body || "");
+            const defectIssues = linkedIssues.filter(isDataDefect);
+            const isDataDefectPR = pr.labels.some((label) => label.name === "data-defect") ||
+              /^\[data defect\]/i.test(pr.title);
+
+            if (isDataDefectPR && linkedIssues.length === 0) {
+              core.setFailed(
+                "A data-defect pull request must use a closing reference such as `Closes #123`."
+              );
+              return;
+            }
+            if (isDataDefectPR && defectIssues.length === 0) {
+              core.setFailed(
+                "A data-defect pull request must link an issue with the `data-defect` label."
+              );
+              return;
+            }
+
+            for (const issue of defectIssues) {
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                per_page: 100
+              });
+              await verifyGateOne({
+                issue,
+                comments,
+                github,
+                owner: context.repo.owner,
+                repo: context.repo.repo
+              });
+            }
+            core.info("The current Gate 1 approval is valid.");
+
+  refresh-issue-gate-status:
+    if: (github.event_name == 'issue_comment' || github.event_name == 'issues') && github.event.issue.pull_request == null
+    name: Refresh linked pull-request Gate 1 status
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+      statuses: write
+    steps:
+      - name: Check out trusted default-branch scripts
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+
+      - name: Refresh statuses for linked pull requests
         uses: actions/github-script@v7
         with:
           script: |
@@ -100,35 +172,6 @@ jobs:
                 description: error.message.slice(0, 140)
               });
               core.setFailed(error.message);
-            }
-
-            if (context.eventName === "pull_request") {
-              const pr = context.payload.pull_request;
-              const linkedIssues = await getLinkedIssues(pr.body || "");
-              const defectIssues = linkedIssues.filter(isDataDefect);
-              const isDataDefectPR = pr.labels.some((label) => label.name === "data-defect") ||
-                /^\[data defect\]/i.test(pr.title);
-
-              if (isDataDefectPR && linkedIssues.length === 0) {
-                await failStatus(pr.head.sha, new Error(
-                  "A data-defect pull request must use a closing reference such as `Closes #123`."
-                ));
-                return;
-              }
-              if (isDataDefectPR && defectIssues.length === 0) {
-                await failStatus(pr.head.sha, new Error(
-                  "A data-defect pull request must link an issue with the `data-defect` label."
-                ));
-                return;
-              }
-
-              try {
-                await checkIssues(linkedIssues, pr.head.sha);
-                core.info("Gate 1 freshness status updated for the pull-request commit.");
-              } catch (error) {
-                await failStatus(pr.head.sha, error);
-              }
-              return;
             }
 
             const issue = context.payload.issue;
