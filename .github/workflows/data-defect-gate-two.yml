@@ -20,10 +20,11 @@ jobs:
     name: Verify Data-defect Gate 2 evidence
     runs-on: ubuntu-latest
     steps:
-      - name: Check out trusted default-branch validators
+      - name: Check out pull-request validators with read-only permissions
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
 
       - name: Validate evidence against the current commit

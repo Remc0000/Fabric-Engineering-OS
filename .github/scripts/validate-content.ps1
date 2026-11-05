@@ -191,7 +191,9 @@ $requiredContent = @{
         "pull-requests: read",
         "gate-two-evidence.js",
         "headSha: pr.head.sha",
-        "github.event.repository.default_branch"
+        "github.event.pull_request.head.repo.full_name",
+        "github.event.pull_request.head.sha",
+        "persist-credentials: false"
     )
     ".github\scripts\gate-two-evidence.js" = @(
         "Feature workspace and Fabric Git branch",
