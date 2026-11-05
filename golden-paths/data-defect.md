@@ -71,7 +71,8 @@ For a revision request, use `Gate 1 decision: Revision assigned` and describe th
 3. Validate in an isolated, change-specific Fabric feature workspace connected to the change branch through Fabric Git integration, when the item types, tenant, and workspace configuration support it.
 4. Compare before/after outputs using agreed control totals and representative authorized data. Bind sanitized results, environment, inputs, and limitations to the exact pull-request commit. Complete the **Data-defect evidence** section in the pull-request template.
 5. Inspecteur reports reproducible expected-versus-actual results. Criticus separately challenges assumptions, scope, failure modes, and data changes outside the reported defect.
-6. If an isolated workspace or valid data comparison is unavailable, state that evidence gap; do not claim a data-level pass or treat unit tests as a substitute.
+6. Gate 2 validation rejects missing evidence fields, placeholders, a missing immutable Gate 1 approval, or an evidence SHA that differs from the current PR commit. It checks completeness and revision binding only; it does not prove that the workspace, test, comparison, or reviewer evidence is genuine.
+7. If an isolated workspace or valid data comparison is unavailable, state that evidence gap; do not claim a data-level pass or treat unit tests as a substitute.
 
 ## Gate 2 — Approve the build
 
@@ -86,7 +87,7 @@ The human reviewer checks the current PR commit, approved proposal, focused diff
 
 ## Current implementation boundary
 
-The intake form, triage-label permission check, and this process are defined in this repository. A production-ready feature-workspace provisioner, enforceable Gate 1/Gate 2 SHA validation, and functional DEV/TEST deployment adapters still require separately reviewed implementation and validation. The default deployment adapters fail closed. No tenant identity, workspace, data access, deployment, or pilot is implied by this guidance.
+The intake form, triage-label permission check, Gate 1 validation, and Gate 2 evidence-completeness/SHA validation are defined in this repository. Gate 2 evidence validation must be made a required branch-protection check after its workflow is merged and verified; it does not validate evidence truth or operate a Fabric workspace. A production-ready feature-workspace provisioner and functional DEV/TEST deployment adapters still require separately reviewed implementation and validation. The default deployment adapters fail closed. No tenant identity, workspace, data access, deployment, or pilot is implied by this guidance.
 
 ## Required evidence
 

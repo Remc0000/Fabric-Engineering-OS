@@ -34,6 +34,7 @@ Complete this section when the linked issue has the `data-defect` label; otherwi
 - Feature workspace and Fabric Git branch:
 - Regression test and result:
 - Before/after comparison and agreed control totals:
+- Evidence sanitization and data authorization:
 - Inspecteur verification and limitations:
 - Criticus findings and disposition:
 - Exact PR commit SHA:
